@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JLT.SEG.Entidades
+{
+    public class BETipoUsuario
+    {
+        public int IdTipoUsuario { get; set; }
+        public string NombreTipoUsuario { get; set; }
+        public string DescripcionTipoUsuario { get; set; }
+        public bool EstadoTipoUsuario { get; set; }
+   
+    
+    }
+}

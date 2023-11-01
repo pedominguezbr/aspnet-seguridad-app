@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio
+END
+JLT.SEG.Negocio.snk
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/JLT.SEG.Negocio.snk
+END
+BLValidarAcceso.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLValidarAcceso.cs
+END
+BLAplicacion.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLAplicacion.cs
+END
+JLT.SEG.Negocio.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/JLT.SEG.Negocio.csproj
+END
+BLOficina.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLOficina.cs
+END
+BLArea.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLArea.cs
+END
+BLTipoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLTipoObjeto.cs
+END
+BLPermisoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLPermisoObjeto.cs
+END
+BLObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLObjeto.cs
+END
+BLTipoUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLTipoUsuario.cs
+END
+BLPermisoUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLPermisoUsuario.cs
+END
+BLUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLUsuario.cs
+END
+BLTipoEmpresa.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLTipoEmpresa.cs
+END
+BLRol.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLRol.cs
+END
+BLEmpresa.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Negocio/BLEmpresa.cs
+END

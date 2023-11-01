@@ -1,0 +1,236 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using APP.SEG.Helper;
+using APP.SEG.Negocio;
+using APP.SEG.Entidades;
+using APP.SEG.WEB.Util;
+using System.Data;
+
+namespace APP.SEG.WEB.Roles
+{
+    public partial class frmRolBuscar : PaginaBase
+    {
+        private const string ID_ROL = "idRol";
+        private const string ID_FORMULARIO = "frmRolBuscar";
+
+        protected new void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                base.Page_Load(null, null);
+
+                if (!IsPostBack)
+                {
+                    this.Session.Remove(Constantes.SESION_ROLES);
+                    //Cargamos los datos de los controles de la pantalla
+                    CargarDatosControles();
+                    this.dgvRoles.PageSize = Convert.ToInt32(WebConfigurationManager.AppSettings[Constantes.REGISTRO_PAGINA]);
+                }
+                CargarPermisosObjetosFormulario(ID_FORMULARIO);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        protected void dgvRoles_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int idRol = Convert.ToInt32(e.CommandArgument);
+                BERol beRol = new BERol();
+                beRol.IdRol = idRol;
+
+                if (e.CommandName == Constantes.COMANDO_ANULAR)
+                {
+                    try
+                    {
+                        BLRol blRol = new BLRol();
+                        int codigoMensaje = 0;
+                        blRol.EliminarRol(beRol, ref codigoMensaje);
+                        if (codigoMensaje == 0)
+                        {
+                            MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ROL_ELIMINADO_EXITOSAMENTE]);
+                            BuscarRolesDataBind();
+                        }
+                        else
+                        {
+                            if (codigoMensaje == -1)
+                            {
+                                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_NO_SE_PUEDE_ELIMINAR_ROL_EXISTEN_PERMISOS_OBJETO]);
+                            }
+                            else
+                            {
+                                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_NO_SE_PUEDE_ELIMINAR_ROL_EXISTEN_PERMISOS_USUARIO]);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                        //NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+                    }
+                }
+                else if (e.CommandName == Constantes.COMANDO_MODIFICAR)
+                {
+                    Session.Remove(Constantes.SESION_ROL);
+                    String urlDetalleRol = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_ROL_DETALLE_MODIFICAR]) + "&" + ID_ROL + "=" + idRol.ToString();
+                    Response.Redirect(urlDetalleRol,false);
+                }
+                else if (e.CommandName == Constantes.COMANDO_CONSULTAR)
+                {
+                    Session.Remove(Constantes.SESION_ROL);
+                    String urlDetalleRol = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_ROL_DETALLE_CONSULTAR]) + "&" + ID_ROL + "=" + idRol.ToString();
+                    Response.Redirect(urlDetalleRol,false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void BuscarRolesDataBind()
+        {
+            string mensaje;
+            BLRol blRol = new BLRol();
+            BEBusquedaRol beBusquedaRol = new BEBusquedaRol();
+            beBusquedaRol.NombreRol = txtRol.Text;
+            if (ddlAplicativo.SelectedValue.Equals(Constantes.ID_DDL_DEFAULT))
+            {
+                beBusquedaRol.CodigoAplicativo = 0;
+            }
+            else
+            {
+                beBusquedaRol.CodigoAplicativo = Convert.ToInt32(ddlAplicativo.SelectedValue);
+            }
+
+            List<BERol> listaRol = new List<BERol>();
+            listaRol = blRol.ListarRol(beBusquedaRol);
+
+            if (listaRol.Count > 0)
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA] + listaRol.Count;
+            }
+            else
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA_CERO];
+            }
+            this.Session.Add(Constantes.SESION_ROLES, listaRol);
+
+            MostrarMensajeResultados(mensaje);
+            this.dgvRoles.PageIndex = 0;
+            dgvRoles.DataSource = listaRol;
+            dgvRoles.DataBind();
+        }
+
+        private void MostrarMensajeResultados(String Mensaje)
+        {
+            lbResultados.CssClass = this.lbResultados.CssClass + " displayShow";
+            lbResultados.Text = Mensaje;
+            lbResultados.Visible = true;
+        }
+
+        private void CargarDatosControles()
+        {
+
+            BLAplicacion blAplicacion = new BLAplicacion();
+            Formularios.CargarDropDownList(ddlAplicativo,
+                                           blAplicacion.ListarAplicacion(),
+                                           Constantes.TEXTO_DDL_APLICATIVO,
+                                           Constantes.VALUE_DDL_APLICATIVO,
+                                           Constantes.DEFAULT_DDL_APLICATIVO);
+            List<BERol> listaRol = new List<BERol>();
+            BERol beRol = new BERol();
+            beRol.Aplicacion = new BEAplicacion();
+            beRol.IdRol = 0;
+            beRol.NombreRol = "None";
+            beRol.Aplicacion.NombreCortoAplicacion = "None";
+            beRol.EstadoRol = false;
+
+            listaRol.Add(beRol);
+
+            dgvRoles.DataSource = listaRol;
+            dgvRoles.DataBind();
+            dgvRoles.Rows[0].Visible = false;
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            //Redireccionamos a la pantalla de Detalle de Roles
+                Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_ROL_DETALLE],false);
+          }
+
+        protected void dgvRoles_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            try
+            {
+                dgvRoles.SelectedIndex = e.NewSelectedIndex;
+                dgvRoles.DataBind();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BuscarRolesDataBind();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+                txtRol.Text = String.Empty;
+                ddlAplicativo.SelectedValue = Constantes.ID_DDL_DEFAULT;
+
+        }
+
+        protected void dgvRoles_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                if (this.Session[Constantes.SESION_ROLES] != null)
+                {
+                    this.dgvRoles.PageIndex = e.NewPageIndex;
+                    List<BERol> listaRoles = (List<BERol>)this.Session[Constantes.SESION_ROLES];
+                    this.dgvRoles.DataSource = listaRoles;
+                    this.dgvRoles.DataBind();
+                }
+                else
+                {
+                    this.BuscarRolesDataBind();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        override protected void OnInit(EventArgs e)
+        {
+            this.Load += new System.EventHandler(this.Page_Load);
+        }
+    }
+}

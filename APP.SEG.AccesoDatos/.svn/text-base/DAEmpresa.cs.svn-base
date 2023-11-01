@@ -1,0 +1,258 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data.Common;
+using JLT.SEG.Entidades;
+using System.Data;
+
+namespace JLT.SEG.AccesoDatos
+{
+    public class DAEmpresa
+    {
+        #region Constantes
+        private const string UP_EMPRESA_USUARIO = "up_Empresa_Usuario";
+        private const string UP_EMPRESA_LISTAR = "up_Empresa_Listar";
+        private const string UP_EMPRESA_LISTAR_TIPOEMPRESA = "up_Empresa_Listar_TipoEmpresa";
+        private const string UP_EMPRESA_ELIMINAR = "up_Empresa_Eliminar";
+        private const string UP_EMPRESA_LISTAR_ID = "up_Empresa_Listar_Id";
+        private const string UP_EMPRESA_INSERTAR = "up_Empresa_Insertar";
+        private const string UP_EMPRESA_MODIFICAR = "up_Empresa_Modificar";
+        private const string UP_EMPRESA_USUARIO_INSERTAR = "up_Empresa_Usuario_Insertar";
+        private const string UP_EMPRESA_USUARIO_ELIMINAR = "up_Empresa_Usuario_Eliminar";
+        private const string UP_EMPRESA_LISTAR_NRODOCUMENTO = "up_Empresa_Listar_Usuario_NroDocumento";
+        private const string UP_EMPRESA_USUARIO_ACTUALIZAR = "up_Empresa_Usuario_Actualizar";
+
+        private const string INT_ID_USUARIO = "IdUsuario";
+        private const string INT_ID_EMPRESA = "IdEmpresa";
+        private const string VCH_NOM_EMPRESA = "NomEmpresa";
+        private const string VCH_NOM_TIPOEMPRESA = "NomTipoEmpresa";
+        private const string BOO_EST_EMPRESA = "EstadoEmpresa";
+        private const string INT_ID_TIPOEMPRESA = "IdTipoEmpresa";
+        private const string INT_CODIGO_MENSAJE = "IntCodigoMensaje";
+        private const string VCH_RUC = "Ruc";
+        private const string VCH_TELEFONO = "Telefono";
+        private const string INT_ID_APLICACION = "IdAplicacion";
+        #endregion
+        #region Variables
+        private Database db;
+        #endregion
+        #region Constructor
+        public DAEmpresa()
+        {
+            db = EnterpriseLibraryContainer.Current.GetInstance<Database>();
+        }
+        #endregion
+        #region Metodos
+        public List<BEEmpresa> ListarEmpresaxUsuario(BEUsuario oBEUsuario,int IdAplicacion)
+        {
+            List<BEEmpresa> lstEmpresa = new List<BEEmpresa>();
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_USUARIO);
+            db.AddInParameter(cmd, INT_ID_USUARIO, DbType.Int32, oBEUsuario.IdUsuario);
+            db.AddInParameter(cmd, INT_ID_APLICACION, DbType.Int32, IdAplicacion);
+            using (IDataReader dr = db.ExecuteReader(cmd))
+            {
+                while (dr.Read())
+                {
+                    BEEmpresa oBEEmpresa = new BEEmpresa();
+                    oBEEmpresa.IdEmpresa = Int32.Parse(dr[INT_ID_EMPRESA].ToString());
+                    oBEEmpresa.NomEmpresa = dr[VCH_NOM_EMPRESA].ToString();
+                    oBEEmpresa.Ruc = dr[VCH_RUC].ToString();
+                    oBEEmpresa.BETipoEmpresa = new BETipoEmpresa();
+                    oBEEmpresa.BETipoEmpresa.IdTipoEmpresa = Int32.Parse(dr[INT_ID_TIPOEMPRESA].ToString());
+                    oBEEmpresa.BETipoEmpresa.BEAplicacion = new BEAplicacion();
+                    oBEEmpresa.BETipoEmpresa.BEAplicacion.IdAplicacion = Int32.Parse(dr[INT_ID_APLICACION].ToString());
+                    lstEmpresa.Add(oBEEmpresa);
+                }
+            }
+            return lstEmpresa;
+        }
+        public List<BEEmpresa> BuscarEmpresa(BEEmpresa oBEEmpresa) 
+        {
+            List<BEEmpresa> listaEmpresa = new List<BEEmpresa>();
+
+            //Configurando el stored procedure
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_LISTAR);
+            db.AddInParameter(cmd, VCH_NOM_EMPRESA, DbType.String, oBEEmpresa.NomEmpresa + "%");
+            using (IDataReader dr = db.ExecuteReader(cmd))
+            {
+                //Recorremos los resultados del stored procedure
+                while (dr.Read())
+                {
+                    //Llenamos el objeto 
+                    oBEEmpresa = new BEEmpresa();
+                    oBEEmpresa.IdEmpresa = Int32.Parse(dr[INT_ID_EMPRESA].ToString());
+                    oBEEmpresa.NomEmpresa = dr[VCH_NOM_EMPRESA].ToString();
+                    oBEEmpresa.BETipoEmpresa = new BETipoEmpresa();
+                    oBEEmpresa.BETipoEmpresa.IdTipoEmpresa = Int32.Parse(dr[INT_ID_TIPOEMPRESA].ToString());
+                    oBEEmpresa.BETipoEmpresa.NomTipoEmpresa = dr[VCH_NOM_TIPOEMPRESA].ToString();
+                    oBEEmpresa.EstadoEmpresa =Boolean.Parse (dr[BOO_EST_EMPRESA].ToString());
+                    oBEEmpresa.Ruc = dr[VCH_RUC].ToString();
+                    oBEEmpresa.Telefono = dr[VCH_TELEFONO].ToString();
+                    listaEmpresa.Add(oBEEmpresa);
+                }
+            }
+            return listaEmpresa;
+        }
+
+        public List<BEEmpresa> BuscarEmpresaxTipoEmpresa(BEEmpresa oBEEmpresa)
+        {
+            List<BEEmpresa> listaEmpresa = new List<BEEmpresa>();
+
+            //Configurando el stored procedure
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_LISTAR_TIPOEMPRESA);
+            db.AddInParameter(cmd, VCH_NOM_EMPRESA, DbType.String, oBEEmpresa.NomEmpresa + "%");
+            db.AddInParameter(cmd, INT_ID_TIPOEMPRESA, DbType.Int32, oBEEmpresa.BETipoEmpresa.IdTipoEmpresa);
+            using (IDataReader dr = db.ExecuteReader(cmd))
+            {
+                //Recorremos los resultados del stored procedure
+                while (dr.Read())
+                {
+                    //Llenamos el objeto 
+                    oBEEmpresa = new BEEmpresa();
+                    oBEEmpresa.IdEmpresa = Int32.Parse(dr[INT_ID_EMPRESA].ToString());
+                    oBEEmpresa.NomEmpresa = dr[VCH_NOM_EMPRESA].ToString();
+                    oBEEmpresa.BETipoEmpresa = new BETipoEmpresa();
+                    oBEEmpresa.BETipoEmpresa.IdTipoEmpresa = Int32.Parse(dr[INT_ID_TIPOEMPRESA].ToString());
+                    oBEEmpresa.BETipoEmpresa.NomTipoEmpresa = dr[VCH_NOM_TIPOEMPRESA].ToString();
+                    oBEEmpresa.EstadoEmpresa = Boolean.Parse(dr[BOO_EST_EMPRESA].ToString());
+                    oBEEmpresa.Ruc = dr[VCH_RUC].ToString();
+                    oBEEmpresa.Telefono = dr[VCH_TELEFONO].ToString();
+                    oBEEmpresa.checkValor = false;
+                    listaEmpresa.Add(oBEEmpresa);
+                }
+            }
+            return listaEmpresa;
+        }
+        public bool EliminarEmpresa(int idEmpresa, ref int codigoMensaje) 
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_ELIMINAR);
+            db.AddInParameter(cmd, INT_ID_EMPRESA, DbType.Int32, idEmpresa);
+            db.AddOutParameter(cmd, INT_CODIGO_MENSAJE, DbType.Int16, 0);
+            db.ExecuteNonQuery(cmd);
+
+            if (db.GetParameterValue(cmd, INT_CODIGO_MENSAJE) != null && db.GetParameterValue(cmd, INT_CODIGO_MENSAJE) != DBNull.Value)
+            {
+                codigoMensaje = Convert.ToInt16(db.GetParameterValue(cmd, INT_CODIGO_MENSAJE).ToString());
+            }
+            return true;
+        }
+
+        public BEEmpresa ObtenerEmpresa(int idempresa) 
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_LISTAR_ID);
+            db.AddInParameter(cmd, INT_ID_EMPRESA, DbType.Int32, idempresa);
+            BEEmpresa oBEEmpresa = null;
+            using (IDataReader dr = db.ExecuteReader(cmd))
+            {
+                //Recorremos los resultados del stored procedure
+                while (dr.Read())
+                {
+                    //Llenamos el objeto 
+                    oBEEmpresa = new BEEmpresa();
+                    oBEEmpresa.IdEmpresa = Int32.Parse(dr[INT_ID_EMPRESA].ToString());
+                    oBEEmpresa.NomEmpresa = dr[VCH_NOM_EMPRESA].ToString();
+                    oBEEmpresa.BETipoEmpresa = new BETipoEmpresa();
+                    oBEEmpresa.BETipoEmpresa.IdTipoEmpresa = Int32.Parse(dr[INT_ID_TIPOEMPRESA].ToString());
+                    oBEEmpresa.EstadoEmpresa = Boolean.Parse(dr[BOO_EST_EMPRESA].ToString());
+                    oBEEmpresa.Ruc = dr[VCH_RUC].ToString();
+                    oBEEmpresa.Telefono = dr[VCH_TELEFONO].ToString();
+                }
+            }
+            return oBEEmpresa;
+        }
+
+        public BEEmpresa ObtenerEmpresaxRuc(string NroDocumento) 
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_LISTAR_NRODOCUMENTO);
+            db.AddInParameter(cmd, VCH_RUC, DbType.String, NroDocumento);
+            BEEmpresa oBEEmpresa = null;
+            using (IDataReader dr = db.ExecuteReader(cmd))
+            {
+                //Recorremos los resultados del stored procedure
+                while (dr.Read())
+                {
+                    //Llenamos el objeto 
+                    oBEEmpresa = new BEEmpresa();
+                    oBEEmpresa.IdEmpresa = Int32.Parse(dr[INT_ID_EMPRESA].ToString());
+                    oBEEmpresa.NomEmpresa = dr[VCH_NOM_EMPRESA].ToString();
+                    oBEEmpresa.BETipoEmpresa = new BETipoEmpresa();
+                    oBEEmpresa.BETipoEmpresa.IdTipoEmpresa = Int32.Parse(dr[INT_ID_TIPOEMPRESA].ToString());
+                    oBEEmpresa.EstadoEmpresa = Boolean.Parse(dr[BOO_EST_EMPRESA].ToString());
+                    oBEEmpresa.Ruc = dr[VCH_RUC].ToString();
+                    oBEEmpresa.Telefono = dr[VCH_TELEFONO].ToString();
+                }
+            }
+            return oBEEmpresa;
+        }
+        public bool InsertarEmpresa(BEEmpresa oBEEmpresa) 
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_INSERTAR);
+
+            db.AddOutParameter(cmd, INT_ID_EMPRESA, DbType.Int32, oBEEmpresa.IdEmpresa);
+            db.AddInParameter(cmd, VCH_NOM_EMPRESA, DbType.String, oBEEmpresa.NomEmpresa);
+            db.AddInParameter(cmd, BOO_EST_EMPRESA, DbType.Boolean, oBEEmpresa.EstadoEmpresa);
+            db.AddInParameter(cmd, INT_ID_TIPOEMPRESA, DbType.Int32, oBEEmpresa.BETipoEmpresa.IdTipoEmpresa);
+            db.AddInParameter(cmd, VCH_RUC, DbType.String, oBEEmpresa.Ruc);
+            db.AddInParameter(cmd, VCH_TELEFONO, DbType.String, oBEEmpresa.Telefono);
+
+            db.ExecuteNonQuery(cmd);
+
+            if (db.GetParameterValue(cmd, INT_ID_EMPRESA) != null && db.GetParameterValue(cmd, INT_ID_EMPRESA) != DBNull.Value)
+            {
+                oBEEmpresa.IdEmpresa = Convert.ToInt16(db.GetParameterValue(cmd, INT_ID_EMPRESA).ToString());
+            }
+            return true;
+        }
+
+        public bool EliminarEmpresaxUsuario(int IdUsuario,int IdEmpresa,int IdAplicacion)
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_USUARIO_ELIMINAR);
+            db.AddInParameter(cmd, INT_ID_EMPRESA, DbType.Int32, IdEmpresa);
+            db.AddInParameter(cmd, INT_ID_USUARIO, DbType.Int32, IdUsuario);
+            db.AddInParameter(cmd, INT_ID_APLICACION, DbType.Int32, IdAplicacion);
+            db.ExecuteNonQuery(cmd);
+            return true;
+        }
+
+        public bool EliminarEmpresaxUsuario_Usuario(int IdUsuario, int IdAplicacion)
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_USUARIO_ACTUALIZAR);
+            db.AddInParameter(cmd, INT_ID_USUARIO, DbType.Int32, IdUsuario);
+            db.AddInParameter(cmd, INT_ID_APLICACION, DbType.Int32, IdAplicacion);
+            db.ExecuteNonQuery(cmd);
+            return true;
+        }
+
+        public bool InsertarEmpresaUsuario(int IdEmpresa, int IdUsuario,int IdAplicacion) 
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_USUARIO_INSERTAR);
+            db.AddInParameter(cmd, INT_ID_EMPRESA, DbType.Int32 , IdEmpresa);
+            db.AddInParameter(cmd, INT_ID_USUARIO, DbType.Int32, IdUsuario);
+            db.AddInParameter(cmd, INT_ID_APLICACION, DbType.Int32, IdAplicacion);
+            db.ExecuteNonQuery(cmd);
+
+            return true;
+        }
+
+        public bool ActualizarEmpresa(BEEmpresa oBEEmpresa)
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_EMPRESA_MODIFICAR);
+
+            db.AddInParameter(cmd, INT_ID_EMPRESA, DbType.Int32, oBEEmpresa.IdEmpresa);
+            db.AddInParameter(cmd, VCH_NOM_EMPRESA, DbType.String, oBEEmpresa.NomEmpresa);
+            db.AddInParameter(cmd, BOO_EST_EMPRESA, DbType.Boolean, oBEEmpresa.EstadoEmpresa);
+            db.AddInParameter(cmd, INT_ID_TIPOEMPRESA, DbType.Int32, oBEEmpresa.BETipoEmpresa.IdTipoEmpresa);
+            db.AddInParameter(cmd, VCH_RUC, DbType.String, oBEEmpresa.Ruc);
+            db.AddInParameter(cmd, VCH_TELEFONO, DbType.String, oBEEmpresa.Telefono);
+
+            db.ExecuteNonQuery(cmd);
+
+            return true;
+        }
+        #endregion
+    }
+}

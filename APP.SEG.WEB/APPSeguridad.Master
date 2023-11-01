@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="APPSeguridad.Master.cs" Inherits="APP.SEG.WEB.APPSeguridad" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>APP® Seguridad - Bienvenido</title>
+	<link href="~/Recursos/css/clean.css" rel="stylesheet" type="text/css" />
+	<link href="~/Recursos/css/main.css" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+        <link href="~/Recursos/css/ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lte IE 7]>
+        <link href="~/Recursos/css/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <script src="../Recursos/js/jquery-1.2.1.min.js" type="text/javascript"></script>
+    <script src="../Recursos/js/main.js" type="text/javascript"></script>
+    <script src="../Recursos/js/APP.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+<div id="BigPage">
+<form id="form1" runat="server">
+
+<div id="header">
+
+    <div class="top-nav">
+    	<ul class="listah">
+            <li><a>Bienvenido</a></li>
+            <li><asp:LinkButton ID="lnkCambiarPassword" runat= "server" CssClass="login" onclick="lnkCambiarPassword_Click"
+                    >Cambiar Password</asp:LinkButton></li>
+            <li><asp:LinkButton ID="lnkLogout" runat= "server" CssClass="login"
+                    onclick="lnkLogout_Click">Logout</asp:LinkButton></li>
+        </ul>
+    </div>
+    <div class="logo"></div>
+</div><!-- FIN HEADER -->
+
+<div id="container">
+	<div class="welcome rounded">
+		<div class="sombra"></div>
+
+
+    <div>
+        <div class="menu-left">
+            <ul id="lmenu" class="listav">
+            <li><h3 class="rounded">OPCIONES</h3></li>
+
+<!--
+            <li><a>Usuarios</a>
+                <ul class="listav links"  style="display: none; ">
+                    <li><asp:HyperLink ID="HyperLink1" NavigateUrl="~/Usuarios/frmUsuarioBuscar.aspx" runat="server">Gestionar Usuarios</asp:HyperLink></li>
+                </ul>
+            </li>
+        	<li><a>Maestros</a>
+        	    <ul class="listav links"  style="display: none; ">
+        	        <li><asp:HyperLink ID="HyperLink2" NavigateUrl="~/Roles/frmRolBuscar.aspx" runat="server">Gestionar Roles</asp:HyperLink></li>
+        	        <li><asp:HyperLink ID="HyperLink3" NavigateUrl="~/Objetos/frmObjetoBuscar.aspx" runat="server">Gestionar Objetos</asp:HyperLink></li>
+        	    </ul>
+        	</li>
+        	<li><a>Permisos de Objeto</a>
+        	    <ul class="listav links"  style="display: none; ">
+        	        <li><asp:HyperLink ID="HyperLink4" NavigateUrl="~/Permisos/frmPermisoUsuarioBuscar.aspx" runat="server">Gestionar Permisos</asp:HyperLink></li>
+        	    </ul>
+        	</li>
+        	-->
+
+        <asp:Literal ID="ltrMenuOpciones" runat="server"></asp:Literal>
+          </ul>
+        </div>
+        <div class="cuerpo">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+        </asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+        <div class="clear"></div>
+        <div class="sombra-inv"></div>
+	</div><!-- FIN WELCOME -->
+    </div><!-- FIN CONTAINER -->
+
+</form>
+</div><!-- FIN BIGPAGE -->
+</body>
+</html>

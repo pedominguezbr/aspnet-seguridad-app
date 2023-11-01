@@ -1,0 +1,160 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data.Common;
+using APP.SEG.Entidades;
+using System.Data;
+
+
+namespace APP.SEG.AccesoDatos
+{
+    public class DAPermisoObjeto
+    {
+        #region Constantes
+        private const string UP_PERMISOOBJETO_LISTAR = "up_PermisOobjeto_Listar";
+        private const string INT_ID_ROL = "IntIdRol";
+        private const string INT_ID_APLICACION = "IntIdaplicacion";
+        private const string ID_PERMISO_OBJETO = "IdPermisoObjeto";
+        private const string ID_OBJETO = "IdObjeto";
+        private const string ID_ROL = "IdRol";
+        private const string ID_APLICACION = "IdAplicacion";
+        private const string ESTADO_PERMISO_OBJETO = "EstadoPermisoObjeto";
+        private const string FECHA_CREACION = "FechaCreacion";
+        // PROCEDURE INSERTAR
+        private const string UP_PERMISOOBJETO_INSERTAR = "up_PermisoObjeto_Insertar";
+        private const string INT_ID_PERMISO_OBJETO = "IntIdpermisoobjeto";
+        private const string INT_ID_OBJETO = "IntIdobjeto";
+        //private const string INT_ID_ROL = "IntIdrol";
+        //private const string INT_ID_APLICACION = "IntIdaplicacion";
+        private const string BIT_ESTADO_PERMISO = "BitEstadopermisoobjeto";
+        private const string DTM_FECHA_CREACION = "DtmFechacreacion";
+
+        private const string NOMBRE_FISICO_OBJETO = "NombreFisicoObjeto";
+        private const string ID_OBJETO_PADRE = "IdObjetoPadre";
+        private const string INT_CODIGO_ERROR = "IntCodigoError";
+        private const string UP_PERMISOOBJETO_ELIMINAR = "up_PermisoObjeto_Eliminar";
+        private const string UP_PERMISOOBJETO_INSERTAR_SIN_VALIDACION = "up_PermisoObjeto_Insertar_Sin_Validacion";
+        private const string ID_TIPO_OBJETO = "IdTipoObjeto";
+        private const string ETIQUETA_OBJETO = "EtiquetaObjeto";
+
+        #endregion
+
+        #region Variables
+        private Database db;
+        #endregion
+
+        #region Constructor
+        public DAPermisoObjeto()
+        {
+            db = EnterpriseLibraryContainer.Current.GetInstance<Database>();
+        }
+        #endregion
+
+        #region Metodos
+
+        public List<BEObjeto> ListarPermisoObjeto(BEBusquedaPermisoObjeto beBusquedaPermisoObjeto)
+        {
+            List<BEObjeto> listaBeObjeto = null;
+
+            DbCommand cmd = db.GetStoredProcCommand(UP_PERMISOOBJETO_LISTAR);
+            db.AddInParameter(cmd, INT_ID_ROL, DbType.Int32, beBusquedaPermisoObjeto.IdRol);
+            db.AddInParameter(cmd, INT_ID_APLICACION, DbType.Int32, beBusquedaPermisoObjeto.IdAplicacion);
+            listaBeObjeto = new List<BEObjeto>();
+            using (IDataReader dr = db.ExecuteReader(cmd))
+            {
+                while (dr.Read())
+                {
+                    BEObjeto beObjeto = new BEObjeto();
+                    beObjeto.IdPermisoObjeto = Int32.Parse(dr[ID_PERMISO_OBJETO].ToString());
+                    beObjeto.IdObjeto = Int32.Parse(dr[ID_OBJETO].ToString());
+                    if (dr[ID_OBJETO_PADRE] == DBNull.Value)
+                    {
+                        beObjeto.IdObjetoPadre = -1;
+                    }
+                    else
+                    {
+                        beObjeto.IdObjetoPadre = Int32.Parse(dr[ID_OBJETO_PADRE].ToString());
+                    }
+                    beObjeto.NombreFisicoObjeto = dr[NOMBRE_FISICO_OBJETO].ToString();
+                    beObjeto.EtiquetaObjeto = dr[ETIQUETA_OBJETO].ToString();
+                    beObjeto.BERol = new BERol();
+                    beObjeto.BERol.IdRol = Int32.Parse(dr[ID_ROL].ToString());
+                    beObjeto.Aplicacion = new BEAplicacion();
+                    beObjeto.Aplicacion.IdAplicacion = Int32.Parse(dr[ID_APLICACION].ToString());
+                    beObjeto.TipoObjeto = new BETipoObjeto();
+                    beObjeto.TipoObjeto.IdTipoObjeto = Int32.Parse(dr[ID_TIPO_OBJETO].ToString());
+
+                    listaBeObjeto.Add(beObjeto);
+                }
+            }
+
+            return listaBeObjeto;
+        }
+
+
+        public bool InsertarPermisoObjeto(BEPermisoObjeto bePermisoObjeto)
+        {
+
+            DbCommand cmd = db.GetStoredProcCommand(UP_PERMISOOBJETO_INSERTAR);
+            db.AddOutParameter(cmd, INT_ID_PERMISO_OBJETO, DbType.Int16, bePermisoObjeto.IdPermisoObjeto);
+            db.AddInParameter(cmd, INT_ID_OBJETO, DbType.Int16, bePermisoObjeto.BEObjeto.IdObjeto);
+            db.AddInParameter(cmd, INT_ID_ROL, DbType.Int32, bePermisoObjeto.BERol.IdRol);
+            db.AddInParameter(cmd, INT_ID_APLICACION, DbType.Int16, bePermisoObjeto.BEAplicacion.IdAplicacion);
+            db.AddInParameter(cmd, BIT_ESTADO_PERMISO, DbType.Int16, bePermisoObjeto.EstadoPermisoObjeto);
+            db.AddInParameter(cmd, DTM_FECHA_CREACION, DbType.DateTime, bePermisoObjeto.FechaCreacion);
+            db.AddOutParameter(cmd, INT_CODIGO_ERROR, DbType.Int16, 0);
+
+            db.ExecuteNonQuery(cmd);
+
+            if (Convert.ToInt16(db.GetParameterValue(cmd, INT_CODIGO_ERROR).ToString()) == -1)
+            {
+                return false;
+            }
+            else
+            {
+                bePermisoObjeto.IdPermisoObjeto = Int32.Parse(db.GetParameterValue(cmd, INT_ID_PERMISO_OBJETO).ToString());
+            }
+
+            return true;
+
+        }
+
+        public bool EliminarPermisoObjeto(int idPermisoObjeto)
+        {
+
+            DbCommand cmd = db.GetStoredProcCommand(UP_PERMISOOBJETO_ELIMINAR);
+            db.AddInParameter(cmd, INT_ID_PERMISO_OBJETO, DbType.Int16, idPermisoObjeto);
+            db.AddOutParameter(cmd, INT_CODIGO_ERROR, DbType.Int16, 0);
+
+            db.ExecuteNonQuery(cmd);
+
+            if (Convert.ToInt16(db.GetParameterValue(cmd, INT_CODIGO_ERROR).ToString()) == -1)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool InsertarPermisoObjetoSinValidacion(BEPermisoObjeto bePermisoObjeto)
+        {
+            DbCommand cmd = db.GetStoredProcCommand(UP_PERMISOOBJETO_INSERTAR_SIN_VALIDACION);
+            db.AddOutParameter(cmd, INT_ID_PERMISO_OBJETO, DbType.Int16, bePermisoObjeto.IdPermisoObjeto);
+            db.AddInParameter(cmd, INT_ID_OBJETO, DbType.Int16, bePermisoObjeto.BEObjeto.IdObjeto);
+            db.AddInParameter(cmd, INT_ID_ROL, DbType.Int32, bePermisoObjeto.BERol.IdRol);
+            db.AddInParameter(cmd, INT_ID_APLICACION, DbType.Int16, bePermisoObjeto.BEAplicacion.IdAplicacion);
+            db.AddInParameter(cmd, BIT_ESTADO_PERMISO, DbType.Int16, bePermisoObjeto.EstadoPermisoObjeto);
+            db.AddInParameter(cmd, DTM_FECHA_CREACION, DbType.DateTime, bePermisoObjeto.FechaCreacion);
+
+            db.ExecuteNonQuery(cmd);
+            bePermisoObjeto.IdPermisoObjeto = Int32.Parse(db.GetParameterValue(cmd, INT_ID_PERMISO_OBJETO).ToString());
+
+            return true;
+        }
+
+        #endregion
+    }
+}

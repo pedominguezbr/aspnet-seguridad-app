@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3EB98EA-D777-4A61-8C14-57C9B822DE8E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>APP.SEG.WEB</RootNamespace>
+    <AssemblyName>APP.SEG.WEB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>APP.SEG.WEB.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+    <CodeAnalysisRuleSet>Migrated rules for APP.SEG.WEB.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Empresa\frmEmpresaBuscar.aspx" />
+    <Content Include="Empresa\frmEmpresaDetalle.aspx" />
+    <Content Include="Permisos\frmPermisoEmpresaBuscar.aspx" />
+    <Content Include="Permisos\frmPermisoEmpresaDetalle.aspx" />
+    <Content Include="Recursos\css\clean.css" />
+    <Content Include="Recursos\css\ie.css" />
+    <Content Include="Recursos\css\ie7.css" />
+    <Content Include="Recursos\css\main.css" />
+    <Content Include="Recursos\images\buttons\btn_add.png" />
+    <Content Include="Recursos\images\buttons\btn_bg.png" />
+    <Content Include="Recursos\images\buttons\btn_cancel.png" />
+    <Content Include="Recursos\images\buttons\btn_chart.png" />
+    <Content Include="Recursos\images\buttons\btn_check.png" />
+    <Content Include="Recursos\images\buttons\btn_flag.png" />
+    <Content Include="Recursos\images\buttons\btn_lock.png" />
+    <Content Include="Recursos\images\buttons\btn_mail.png" />
+    <Content Include="Recursos\images\buttons\btn_salir.png" />
+    <Content Include="Recursos\images\buttons\btn_save.png" />
+    <Content Include="Recursos\images\buttons\btn_search.png" />
+    <Content Include="Recursos\images\buttons\btn_unlock.png" />
+    <Content Include="Recursos\images\buttons\btn_wizard.png" />
+    <Content Include="Recursos\images\common\bg.png" />
+    <Content Include="Recursos\images\common\block-bg.png" />
+    <Content Include="Recursos\images\common\error.png" />
+    <Content Include="Recursos\images\common\info.png" />
+    <Content Include="Recursos\images\common\sombra-inv.png" />
+    <Content Include="Recursos\images\common\sombra.png" />
+    <Content Include="Recursos\images\common\success.png" />
+    <Content Include="Recursos\images\common\table-head-bg.png" />
+    <Content Include="Recursos\images\common\table-head.png" />
+    <Content Include="Recursos\images\common\warning.png" />
+    <Content Include="Recursos\images\tables\add.png" />
+    <Content Include="Recursos\images\tables\agency.png" />
+    <Content Include="Recursos\images\tables\btn_anular.png" />
+    <Content Include="Recursos\images\tables\btn_consultar.png" />
+    <Content Include="Recursos\images\tables\btn_modificar.png" />
+    <Content Include="Recursos\images\tables\calendar.png" />
+    <Content Include="Recursos\images\tables\delete.png" />
+    <Content Include="Recursos\images\tables\file.png" />
+    <Content Include="Recursos\images\tables\open.png" />
+    <Content Include="Recursos\images\top-menu\abutton-gray.png" />
+    <Content Include="Recursos\images\top-menu\abutton-red.png" />
+    <Content Include="Recursos\images\top-menu\abutton2.png" />
+    <Content Include="Recursos\images\top-menu\menu_div.png" />
+    <Content Include="TipoEmpresa\frmTipoEmpresaAplicacion.aspx" />
+    <Content Include="TipoEmpresa\frmTipoEmpresaBuscar.aspx" />
+    <Content Include="TipoEmpresa\frmTipoEmpresaDetalle.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa\frmEmpresaBuscar.aspx.cs">
+      <DependentUpon>frmEmpresaBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empresa\frmEmpresaBuscar.aspx.designer.cs">
+      <DependentUpon>frmEmpresaBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa\frmEmpresaDetalle.aspx.cs">
+      <DependentUpon>frmEmpresaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Empresa\frmEmpresaDetalle.aspx.designer.cs">
+      <DependentUpon>frmEmpresaDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="APPSeguridad.Master.cs">
+      <DependentUpon>APPSeguridad.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="APPSeguridad.Master.designer.cs">
+      <DependentUpon>APPSeguridad.Master</DependentUpon>
+    </Compile>
+    <Compile Include="JLTSeguridadLogin.Master.cs">
+      <DependentUpon>JLTSeguridadLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JLTSeguridadLogin.Master.designer.cs">
+      <DependentUpon>JLTSeguridadLogin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmBienvenido.aspx.cs">
+      <DependentUpon>frmBienvenido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\frmBienvenido.aspx.designer.cs">
+      <DependentUpon>frmBienvenido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmLogin.aspx.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\frmLogin.aspx.designer.cs">
+      <DependentUpon>frmLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmRenovacionClave.aspx.cs">
+      <DependentUpon>frmRenovacionClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\frmRenovacionClave.aspx.designer.cs">
+      <DependentUpon>frmRenovacionClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Objetos\frmObjetoBuscar.aspx.cs">
+      <DependentUpon>frmObjetoBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Objetos\frmObjetoBuscar.aspx.designer.cs">
+      <DependentUpon>frmObjetoBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Objetos\frmObjetoDetalle.aspx.cs">
+      <DependentUpon>frmObjetoDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Objetos\frmObjetoDetalle.aspx.designer.cs">
+      <DependentUpon>frmObjetoDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoEmpresaBuscar.aspx.cs">
+      <DependentUpon>frmPermisoEmpresaBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoEmpresaBuscar.aspx.designer.cs">
+      <DependentUpon>frmPermisoEmpresaBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoEmpresaDetalle.aspx.cs">
+      <DependentUpon>frmPermisoEmpresaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoEmpresaDetalle.aspx.designer.cs">
+      <DependentUpon>frmPermisoEmpresaDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoObjetoBuscar.aspx.cs">
+      <DependentUpon>frmPermisoObjetoBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoObjetoBuscar.aspx.designer.cs">
+      <DependentUpon>frmPermisoObjetoBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoObjetoDetalle.aspx.cs">
+      <DependentUpon>frmPermisoObjetoDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoObjetoDetalle.aspx.designer.cs">
+      <DependentUpon>frmPermisoObjetoDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoUsuarioBuscar.aspx.cs">
+      <DependentUpon>frmPermisoUsuarioBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoUsuarioBuscar.aspx.designer.cs">
+      <DependentUpon>frmPermisoUsuarioBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoUsuarioDetalle.aspx.cs">
+      <DependentUpon>frmPermisoUsuarioDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Permisos\frmPermisoUsuarioDetalle.aspx.designer.cs">
+      <DependentUpon>frmPermisoUsuarioDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\frmRolBuscar.aspx.cs">
+      <DependentUpon>frmRolBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\frmRolBuscar.aspx.designer.cs">
+      <DependentUpon>frmRolBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\frmRolDetalle.aspx.cs">
+      <DependentUpon>frmRolDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\frmRolDetalle.aspx.designer.cs">
+      <DependentUpon>frmRolDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoEmpresa\frmTipoEmpresaAplicacion.aspx.cs">
+      <DependentUpon>frmTipoEmpresaAplicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TipoEmpresa\frmTipoEmpresaAplicacion.aspx.designer.cs">
+      <DependentUpon>frmTipoEmpresaAplicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoEmpresa\frmTipoEmpresaBuscar.aspx.cs">
+      <DependentUpon>frmTipoEmpresaBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TipoEmpresa\frmTipoEmpresaBuscar.aspx.designer.cs">
+      <DependentUpon>frmTipoEmpresaBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TipoEmpresa\frmTipoEmpresaDetalle.aspx.cs">
+      <DependentUpon>frmTipoEmpresaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TipoEmpresa\frmTipoEmpresaDetalle.aspx.designer.cs">
+      <DependentUpon>frmTipoEmpresaDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmUsuarioBuscar.aspx.cs">
+      <DependentUpon>frmUsuarioBuscar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmUsuarioBuscar.aspx.designer.cs">
+      <DependentUpon>frmUsuarioBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmUsuarioDetalle.aspx.cs">
+      <DependentUpon>frmUsuarioDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmUsuarioDetalle.aspx.designer.cs">
+      <DependentUpon>frmUsuarioDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\AccesoRestringido.aspx.cs">
+      <DependentUpon>AccesoRestringido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Util\AccesoRestringido.aspx.designer.cs">
+      <DependentUpon>AccesoRestringido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Encriptar.aspx.cs">
+      <DependentUpon>Encriptar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Util\Encriptar.aspx.designer.cs">
+      <DependentUpon>Encriptar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\PaginaBase.aspx.cs">
+      <DependentUpon>PaginaBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Util\PaginaBase.aspx.designer.cs">
+      <DependentUpon>PaginaBase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ServicioSeguridadJLT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="APPSeguridad.Master" />
+    <Content Include="Login\frmBienvenido.aspx" />
+    <Content Include="Login\frmLogin.aspx" />
+    <Content Include="Login\frmRenovacionClave.aspx" />
+    <Content Include="Objetos\frmObjetoBuscar.aspx" />
+    <Content Include="Objetos\frmObjetoDetalle.aspx" />
+    <Content Include="Permisos\frmPermisoUsuarioBuscar.aspx" />
+    <Content Include="Permisos\frmPermisoUsuarioDetalle.aspx" />
+    <Content Include="Recursos\images\top-menu\logo-141.jpg" />
+    <Content Include="Roles\frmRolBuscar.aspx" />
+    <Content Include="Roles\frmRolDetalle.aspx" />
+    <Content Include="Usuarios\frmUsuarioBuscar.aspx" />
+    <Content Include="Usuarios\frmUsuarioDetalle.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APP.SEG.AccesoDatos\APP.SEG.AccesoDatos.csproj">
+      <Project>{AFEB3DAC-4238-4BB3-8322-08AF06697291}</Project>
+      <Name>APP.SEG.AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\APP.SEG.Entidades\APP.SEG.Entidades.csproj">
+      <Project>{E02287A0-2FDE-491B-9B13-E0023B07A329}</Project>
+      <Name>APP.SEG.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\APP.SEG.Helper\APP.SEG.Helper.csproj">
+      <Project>{85E99C1A-DD4F-49BB-95BB-4EE75A016FDA}</Project>
+      <Name>APP.SEG.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\APP.SEG.Negocio\APP.SEG.Negocio.csproj">
+      <Project>{94B24F52-7736-40C3-AF8E-928610157AD6}</Project>
+      <Name>APP.SEG.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="JLTSeguridadLogin.Master" />
+    <Content Include="Lib\log4net.dll" />
+    <Content Include="Permisos\frmPermisoObjetoBuscar.aspx" />
+    <Content Include="Permisos\frmPermisoObjetoDetalle.aspx" />
+    <Content Include="Recursos\images\common\menu-left-link.gif" />
+    <Content Include="Recursos\images\common\menu-left-linkh.gif" />
+    <Content Include="Recursos\images\tables\btn_modificarPermiso.png" />
+    <Content Include="Recursos\images\top-menu\banner.png" />
+    <Content Include="Recursos\images\treeview\aplicacion.bmp" />
+    <Content Include="Recursos\images\treeview\boton.bmp" />
+    <Content Include="Recursos\images\treeview\checkbox.bmp" />
+    <Content Include="Recursos\images\treeview\dropdownlist.bmp" />
+    <Content Include="Recursos\images\treeview\formulario.bmp" />
+    <Content Include="Recursos\images\treeview\menu.bmp" />
+    <Content Include="Recursos\images\treeview\radio.bmp" />
+    <Content Include="Recursos\images\treeview\textbox.bmp" />
+    <Content Include="Recursos\js\APP.js" />
+    <Content Include="Recursos\js\jquery-1.2.1.min.js" />
+    <Content Include="Recursos\js\main.js" />
+    <Content Include="Recursos\js\menu-collapsed.js" />
+    <Content Include="Util\AccesoRestringido.aspx" />
+    <Content Include="Util\Encriptar.aspx" />
+    <Content Include="Util\PaginaBase.aspx" />
+    <None Include="APP.SEG.WEB.snk" />
+    <None Include="Migrated rules for APP.SEG.WEB.ruleset" />
+    <None Include="Web References\ServicioSeguridadJLT\BEEmpresa.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\BERespuestaAcceso.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\BERespuestaActualizaClave.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\BERespuestaEncriptaClave.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\BERespuestaPermisoObjeto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\BERespuestaRol.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\BETipoEmpresa.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\BEUsuario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\APPSeguridad.disco" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ServicioSeguridadJLT\APPSeguridad.wsdl" />
+    <None Include="Web References\ServicioSeguridadJLT\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://72.167.200.18/Servicios/APPSeguridad.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ServicioSeguridadJLT\</RelPath>
+      <UpdateFromURL>http://72.167.200.18/Servicios/APPSeguridad.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>JLT_SEG_WEB_ServicioSeguridadJLT_ServicioSeguridad</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1567</DevelopmentServerPort>
+          <DevelopmentServerVPath>/SeguridadJLT</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

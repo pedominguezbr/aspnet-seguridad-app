@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos
+END
+up_Aplicacion_Listar_IdAplicacion.sql
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Aplicacion_Listar_IdAplicacion.sql
+END
+up_Aplicacion_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Aplicacion_Listar.sql
+END
+up_Usuario_Listar_Acceso.sql
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Listar_Acceso.sql
+END
+up_AreaListar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_AreaListar.sql
+END
+up_Aplicacion_Listar_NombreCorto.sql
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Aplicacion_Listar_NombreCorto.sql
+END
+up_Objeto_Insertar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Insertar.sql
+END
+up_PermisoObjeto_Insertar_Sin_Validacion.sql
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoObjeto_Insertar_Sin_Validacion.sql
+END
+up_Permisousuario_Insertar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Permisousuario_Insertar.sql
+END
+up_Objeto_Listar_Padres.sql
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Listar_Padres.sql
+END
+up_Rol_Listar_IdUsuario.sql
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Rol_Listar_IdUsuario.sql
+END
+up_Usuarioclave_Validar_Anteriores.sql
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuarioclave_Validar_Anteriores.sql
+END
+up_PermisoObjeto_Listar_Menu_Acceso.sql
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoObjeto_Listar_Menu_Acceso.sql
+END
+up_Objeto_Eliminar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Eliminar.sql
+END
+up_Objeto_Listar_IdAplicacion_Etiqueta_Objeto.sql
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Listar_IdAplicacion_Etiqueta_Objeto.sql
+END
+up_Rol_Insertar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Rol_Insertar.sql
+END
+up_Objeto_Listar_Permisos_No_Asignados.sql
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Listar_Permisos_No_Asignados.sql
+END
+up_Permisousuario_Eliminar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Permisousuario_Eliminar.sql
+END
+up_Usuario_Actualizar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Actualizar.sql
+END
+up_Rol_Listar_IdAplicacion.sql
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Rol_Listar_IdAplicacion.sql
+END
+up_Usuarioclave_Insertar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuarioclave_Insertar.sql
+END
+up_Rol_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Rol_Listar.sql
+END
+up_Rol_Eliminar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Rol_Eliminar.sql
+END
+up_Obtener_Aplicacion.sql
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Obtener_Aplicacion.sql
+END
+up_PermisoUsuario_Listar_Acceso.sql
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoUsuario_Listar_Acceso.sql
+END
+up_Usuario_Listar_Id.sql
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Listar_Id.sql
+END
+up_PermisoUsuario_Copiar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoUsuario_Copiar.sql
+END
+up_Oficina_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Oficina_Listar.sql
+END
+up_Aplicacionservicioweb_ValidarAccesoServicioWeb.sql
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Aplicacionservicioweb_ValidarAccesoServicioWeb.sql
+END
+up_PermisoObjeto_Insertar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoObjeto_Insertar.sql
+END
+up_Usuario_Actualizar_Password.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Actualizar_Password.sql
+END
+up_Usuario_Obtener_Codigo.sql
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Obtener_Codigo.sql
+END
+up_Objeto_Obtener_Hijos.sql
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Obtener_Hijos.sql
+END
+up_TipoObjeto_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_TipoObjeto_Listar.sql
+END
+up_Usuario_Insertar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Insertar.sql
+END
+up_PermisOobjeto_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisOobjeto_Listar.sql
+END
+up_Auditoriausuario_Insertar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Auditoriausuario_Insertar.sql
+END
+up_Objeto_Obtener.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Obtener.sql
+END
+up_PermisoObjeto_Eliminar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoObjeto_Eliminar.sql
+END
+up_Objeto_Actualizar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Objeto_Actualizar.sql
+END
+up_Tipousuario_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Tipousuario_Listar.sql
+END
+up_PermisoUsuario_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoUsuario_Listar.sql
+END
+up_Aplicacion_Listar_IdUsuario.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Aplicacion_Listar_IdUsuario.sql
+END
+up_Usuario_Listar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Listar.sql
+END
+up_Usuario_Eliminar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Usuario_Eliminar.sql
+END
+up_Rol_Obtener.sql
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Rol_Obtener.sql
+END
+up_Rol_Actualizar.sql
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_Rol_Actualizar.sql
+END
+up_PermisoObjeto_Listar_Acceso.sql
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Procedimientos/up_PermisoObjeto_Listar_Acceso.sql
+END

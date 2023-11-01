@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using APP.SEG.Entidades;
+using APP.SEG.AccesoDatos;
+
+namespace APP.SEG.Negocio
+{
+    public class BLAplicacion
+    {
+        public List<BEAplicacion> ListarAplicacion()
+        {
+            DAAplicacion daAplicacion = new DAAplicacion();
+            return daAplicacion.ListarAplicacion();
+        }
+
+        public List<BEAplicacion> ListarAplicacionPorNombre(string nombreAplicacion)
+        {
+            DAAplicacion daAplicacion = new DAAplicacion();
+            return daAplicacion.ListarAplicacionPorNombre(nombreAplicacion);
+        }
+
+        public BEAplicacion ObtenerAplicacion(int idAplicacion)
+        {
+            DAAplicacion daAplicacion = new DAAplicacion();
+            return daAplicacion.ObtenerAplicacion(idAplicacion);
+        }
+
+        public List<BEAplicacion> ListarAplicacionPorUsuario(int idUsuario)
+        {
+            DAAplicacion daAplicacion = new DAAplicacion();
+            return daAplicacion.ListarAplicacionPorUsuario(idUsuario);
+        }
+
+        public List<BEAplicacion> ListarAplicacionPorIdAplicacion(int idAplicacion)
+        {
+            DAAplicacion daAplicacion = new DAAplicacion();
+            return daAplicacion.ListarAplicacionPorIdAplicacion(idAplicacion);
+        }
+
+        public List<BEAplicacion> ListarAplicacionPorNombreYUsuario(string nombreAplicacion, int Idusuario)
+        {
+            DAAplicacion daAplicacion = new DAAplicacion();
+            return daAplicacion.ListarAplicacionPorNombreYUsuario(nombreAplicacion,Idusuario);
+        }
+    }
+}

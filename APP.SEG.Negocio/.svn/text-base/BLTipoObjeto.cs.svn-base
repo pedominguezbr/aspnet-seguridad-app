@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using JLT.SEG.Entidades;
+using JLT.SEG.AccesoDatos;
+using System.Transactions;
+using System.Configuration;
+
+namespace JLT.SEG.Negocio
+{
+    public class BLTipoObjeto
+    {
+        public List<BETipoObjeto> ListarTipoObjeto()
+        {
+            DATipoObjeto daTipoObjeto = new DATipoObjeto();
+            return daTipoObjeto.ListarTipoObjeto();
+        }
+    }
+}

@@ -1,0 +1,236 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using JLT.SEG.Entidades;
+using JLT.SEG.Helper;
+using System.Web.Configuration;
+using JLT.SEG.Negocio;
+using JLT.SEG.WEB.Util;
+
+namespace JLT.SEG.WEB.Usuarios
+{
+    public partial class frmUsuarioBuscar : PaginaBase
+    {
+        private const string ID_USUARIO = "idUsuario";
+        private const string ID_FORMULARIO = "frmUsuarioBuscar";
+
+        protected new void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                base.Page_Load(null, null);
+                if (!IsPostBack)
+                {
+                    this.Session.Remove(Constantes.SESION_USUARIOS);
+
+                    //Cargamos los datos de los controles de la pantalla
+                    CargarDatosControles();
+                    this.dgvUsuarios.PageSize = Convert.ToInt32(WebConfigurationManager.AppSettings[Constantes.REGISTRO_PAGINA]);
+                }
+                CargarPermisosObjetosFormulario(ID_FORMULARIO);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void CargarDatosControles()
+        {
+            List<BEUsuario> listaUsuario = new List<BEUsuario>();
+            BEUsuario beUsuario = new BEUsuario();
+            beUsuario.IdUsuario = 0;
+            beUsuario.CodigoUsuario = "0";
+            beUsuario.Nombres = "None";
+            beUsuario.ApellidoMaterno = "None";
+            beUsuario.ApellidoPaterno = "None";
+            beUsuario.EstadoUsuario = false;
+
+            listaUsuario.Add(beUsuario);
+
+            dgvUsuarios.DataSource = listaUsuario;
+            dgvUsuarios.DataBind();
+            dgvUsuarios.Rows[0].Visible = false;
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+            txtNombre.Text = String.Empty;
+            txtCodigo.Text = String.Empty;
+            txtApellidoMaterno.Text = String.Empty;
+            txtApellidoPaterno.Text = String.Empty;
+            dgvUsuarios.DataSource = null;
+            dgvUsuarios.DataBind();
+
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BuscarUsuariosDataBind();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void BuscarUsuariosDataBind()
+        {
+            string mensaje;
+            BEUsuario beUsuario = new BEUsuario();
+            BLUsuario blUsuario = new BLUsuario();
+            beUsuario.Nombres = txtNombre.Text;
+            beUsuario.ApellidoPaterno = txtApellidoPaterno.Text;
+            beUsuario.ApellidoMaterno = txtApellidoMaterno.Text;
+            //blUsuario.BuscarUsuario(beUsuario);
+            List<BEUsuario> listaUsuarios = new List<BEUsuario>();
+            listaUsuarios = blUsuario.BuscarUsuario(beUsuario);
+
+            if (listaUsuarios.Count > 0)
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA] + listaUsuarios.Count;
+            }
+            else
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA_CERO];
+            }
+            this.Session.Add(Constantes.SESION_USUARIOS, listaUsuarios);
+
+            MostrarMensajeResultados(mensaje);
+            this.dgvUsuarios.PageIndex = 0;
+
+            dgvUsuarios.DataSource = listaUsuarios;
+            dgvUsuarios.DataBind();
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            //Redireccionamos a la pantalla de Detalle de Usuarios
+            Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_USUARIO_DETALLE], false);
+
+        }
+
+        protected void dgvUsuarios_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            dgvUsuarios.SelectedIndex = e.NewSelectedIndex;
+            dgvUsuarios.DataBind();
+        }
+
+        protected void dgvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(e.CommandArgument);
+                if (e.CommandName == Constantes.COMANDO_ANULAR)
+                {
+                    BLUsuario blUsuario = new BLUsuario();
+                    int codigoMensaje = 0;
+
+                    blUsuario.EliminarUsuario(idUsuario, ref codigoMensaje);
+                    if (codigoMensaje == 0)
+                    {
+                        MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_USUARIO_ELIMINADO_EXITOSAMENTE]);
+                        BuscarUsuariosDataBind();
+                    }
+                    else
+                    {
+                        if (codigoMensaje == -2)
+                        {
+                            MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_NO_SE_PUEDE_ELIMINAR_USUARIO_EXISTEN_PERMISOS_USUARIO]);
+                        }
+                        else//No se puede eliminar, debe entra a modificacion y cambiarle el estado
+                        {
+                            MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_NO_SE_PUEDE_ELIMINAR_USUARIO]);
+                        }
+                    }
+                }
+                else if (e.CommandName == Constantes.COMANDO_MODIFICAR)
+                {
+                    Session.Remove(Constantes.SESION_USUARIO);
+                    String urlDetalleUsuario = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_USUARIO_DETALLE_MODIFICAR]) + "&" + ID_USUARIO + "=" + idUsuario.ToString();
+                    Response.Redirect(urlDetalleUsuario, false);
+                }
+                else if (e.CommandName == Constantes.COMANDO_CONSULTAR)
+                {
+                    Session.Remove(Constantes.SESION_ROL);
+                    String urlDetalleUsuario = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_USUARIO_DETALLE_CONSULTAR]) + "&" + ID_USUARIO + "=" + idUsuario.ToString();
+                    Response.Redirect(urlDetalleUsuario, false);
+                }
+                else if (e.CommandName == Constantes.COMANDO_MODIFICAR_PERMISOS)
+                {
+                    BLUsuario blUsuario = new BLUsuario();
+                    Session.Add(Constantes.SESION_USUARIO, blUsuario.ObtenerUsuario(idUsuario));
+                    Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_USUARIO_PERMISO_BUSCAR], false);
+                }
+                else if (e.CommandName == Constantes.COMANDO_MODIFICAR_EMPRESAS) 
+                {
+                    BLUsuario blUsuario = new BLUsuario();
+                    Session.Add(Constantes.SESION_USUARIO, blUsuario.ObtenerUsuario(idUsuario));
+                    Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_EMPRESA_PERMISO_BUSCAR], false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void MostrarMensajeResultados(String Mensaje)
+        {
+            lbResultados.CssClass = this.lbResultados.CssClass + " displayShow";
+            lbResultados.Text = Mensaje;
+            lbResultados.Visible = true;
+        }
+
+        protected void dgvUsuarios_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int i = e.RowIndex;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+
+        }
+
+        protected void dgvUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                if (this.Session[Constantes.SESION_USUARIOS] != null)
+                {
+                    this.dgvUsuarios.PageIndex = e.NewPageIndex;
+                    List<BEUsuario> listaUsuarios = (List<BEUsuario>)this.Session[Constantes.SESION_USUARIOS];
+                    this.dgvUsuarios.DataSource = listaUsuarios;
+                    this.dgvUsuarios.DataBind();
+                }
+                else
+                {
+                    this.BuscarUsuariosDataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        override protected void OnInit(EventArgs e)
+        {
+            this.Load += new System.EventHandler(this.Page_Load);
+        }
+    }
+}

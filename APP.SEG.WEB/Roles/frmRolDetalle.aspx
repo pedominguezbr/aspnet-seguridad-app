@@ -1,0 +1,99 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/APPSeguridad.Master" AutoEventWireup="false" CodeBehind="frmRolDetalle.aspx.cs" Inherits="APP.SEG.WEB.Roles.frmRolDetalle" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+        <div class="panel">
+            <h1 class="rounded"><asp:Label ID="lbTituloPanel" runat="server">Detalle del</asp:Label> Rol</h1>
+            <br/>
+              <table border="0" cellpadding="0" cellspacing="0" class="fix rounded size700">
+                <tbody>
+                    <tr>
+                        <td><asp:Label ID="lbTituloCodigo" runat="server">Código</asp:Label></td>
+                        <td>
+                               <asp:TextBox ID="txtCodigoRol" runat="server" CssClass="edit rounded"
+                                Width="100px" MaxLength="14"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td><div class="requiredInput">
+                            <div class="requiredBlock">
+                            </div>
+                               <asp:TextBox ID="txtRol" runat="server" CssClass="edit rounded"
+                                Width="300px" MaxLength="50"></asp:TextBox>
+                               <asp:RequiredFieldValidator id="rfvTxtRol" runat="server"
+                                ControlToValidate="txtRol"
+                                ErrorMessage="<span class='warning'></span>"
+                                Display="Static"
+                                InitialValue="" CssClass="validator" ValidationGroup="validacion"></asp:RequiredFieldValidator>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Descripción</td>
+                        <td>
+                        <div class="requiredInput">
+                            <div class="requiredBlock">
+                            </div>
+                               <asp:TextBox ID="txtDescripcion" runat="server" CssClass="edit rounded"
+                                Width="300px" MaxLength="200" Height="90px" TextMode="MultiLine"></asp:TextBox>
+                               <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
+                                ControlToValidate="txtDescripcion"
+                                ErrorMessage="<span class='warning'></span>"
+                                Display="Static"
+                                InitialValue="" CssClass="validator" ValidationGroup="validacion"></asp:RequiredFieldValidator>
+                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Aplicativo</td>
+                        <td>
+                        <div class="requiredInput">
+                            <div class="requiredBlock">
+                            </div>
+                            <asp:DropDownList ID="ddlAplicativo" runat="server" Width="305px"
+                                CssClass="edit rounded">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator id="rfvDdlAplicativo" runat="server"
+                              ControlToValidate="ddlAplicativo"
+                              ErrorMessage="<span class='warning'></span>"
+                              Display="Static"
+                              InitialValue="-1" ValidationGroup="validacion"></asp:RequiredFieldValidator>
+                              </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estado</td>
+                        <td>
+                            <asp:DropDownList ID="ddlEstado" runat="server" Width="105px"
+                                CssClass="edit rounded">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator id="rfvDdlEstado" runat="server"
+                              ControlToValidate="ddlEstado"
+                              ErrorMessage="<span class='warning'></span>"
+                              Display="Static"
+                              InitialValue="-1" ValidationGroup="validacion"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+
+                     <tr>
+                        <td colspan="2">
+                            <asp:Button ID="btnGuardar" runat="server" Text="Guardar"
+                                CssClass="btn rounded" ValidationGroup="validacion"
+                                onclick="btnGuardar_Click"/>
+                            <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar"
+                                CssClass="btn rounded" onclick="btnLimpiar_Click" />
+                            <asp:Label ID="lbResultados" runat="server" CssClass="infoResultado rounded"
+                                Visible="False" ></asp:Label>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <asp:Button ID="btnSalir" runat="server" Text="Salir"
+                CssClass="btn rounded fright" style="margin-right:0px;"
+                onclick="btnSalir_Click"/>
+            <div class="clear"></div>
+        </div>
+</asp:Content>

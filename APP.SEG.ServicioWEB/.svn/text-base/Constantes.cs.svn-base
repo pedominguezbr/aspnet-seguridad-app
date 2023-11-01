@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace JLT.SEG.ServicioWEB
+{
+    public class Constantes
+    {
+        public static readonly string CODIGO_RESPUESTA_NO_SE_TIENE_ACCESO_SERVICIO_WEB = "0";
+        public static readonly string CODIGO_RESPUESTA_CLAVE_ACTUALIZADA_CORRECTAMENTE = "1";
+        public static readonly string CODIGO_RESPUESTA_CLAVE_REPETIDA_13_ULTIMAS = "3";
+        public static readonly string CODIGO_RESPUESTA_USUARIO_INVALIDO = "4";
+        public static readonly string CODIGO_RESPUESTA_CLAVE_NO_CUMPLE_REQUISITOS_MINIMOS = "5";
+
+        public static readonly string CODIGO_RESPUESTA_PARAMETROS_INCOMPLETOS = "-9";
+       
+        public static readonly string CODIGO_RESPUESTA_EXITOSA_LISTA_ROLES = "1";
+        public static readonly string CODIGO_RESPUESTA_EXITOSA_LISTA_PERMISO_OBJETO = "1";
+
+        public static readonly string MSG_NO_TIENE_ACCESO_SERVICIO_WEB = "MSG_NO_TIENE_ACCESO_SERVICIO_WEB";
+        public static readonly string MSG_CLAVE_POR_ACTUALIZAR_REPETIDA = "MSG_CLAVE_POR_ACTUALIZAR_REPETIDA";
+        public static readonly string MSG_EXITO = "MSG_EXITO";
+
+        public static readonly string CODIGO_RESPUESTA_LOGUEO_EXISTOSO = "1";
+        public static readonly string CODIGO_RESPUESTA_LOGUEO_CLAVE_ERRONEA = "2";
+        public static readonly string CODIGO_RESPUESTA_LOGUEO_CLAVE_EXPIRADA = "3";
+        public static readonly string CODIGO_RESPUESTA_LOGUEO_USUARIO_NO_TIENE_PERMISOS_APLICACION = "4";
+        public static readonly string CODIGO_RESPUESTA_LOGUEO_USUARIO_INACTIVO = "5";
+        public static readonly string CODIGO_RESPUESTA_LOGUEO_USUARIO_DEBE_CAMBIAR_CLAVE = "6";
+
+        public static readonly string CODIGO_RESPUESTA_ENCRIPTACION_EXITOSA = "1";
+        public static readonly string CODIGO_RESPUESTA_DESENCRIPTACION_EXITOSA = "1";
+
+        public static readonly string MSG_CLAVE_ERRADA = "MSG_CLAVE_ERRADA";
+        public static readonly string MSG_USUARIO_NO_TIENE_PERMISO_APLICACION = "MSG_USUARIO_NO_TIENE_PERMISO_APLICACION";
+        public static readonly string MSG_CLAVE_EXPIRADA = "MSG_CLAVE_EXPIRADA";
+        public static readonly string MSG_USUARIO_INACTIVO = "MSG_USUARIO_INACTIVO";
+        public static readonly string MSG_CLAVE_USUARIO_INVALIDO = "MSG_CLAVE_USUARIO_INVALIDO";
+        public static readonly string MSG_CLAVE_USUARIO_DEBE_CAMBIAR_CLAVE = "MSG_CLAVE_USUARIO_DEBE_CAMBIAR_CLAVE";
+        public static readonly string MSG_CLAVE_NO_CUMPLE_REQUISITOS_MINIMOS = "MSG_CLAVE_NO_CUMPLE_REQUISITOS_MINIMOS";
+
+        public static readonly string MSG_PARAMETROS_INCOMPLETOS = "MSG_PARAMETROS_INCOMPLETOS";
+
+        public static readonly string CLAVE_SIMBOLOS_ESPECIALES = "@#$%^&+=";
+
+        public static readonly string ASUNTO_RECORDAR_CONTRASENA = "ASUNTO_RECORDAR_CONTRASENA";
+
+        public static readonly string RUTA_FIRMA_WRAPUP = "RUTA_FIRMA";
+        //
+    }
+}

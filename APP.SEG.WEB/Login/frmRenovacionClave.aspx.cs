@@ -1,0 +1,149 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Configuration;
+using APP.SEG.Helper;
+using APP.SEG.Entidades;
+using APP.SEG.WEB.Util;
+
+namespace APP.SEG.WEB.Login
+{
+    public partial class frmRenovacionClave : PaginaBase
+    {
+        protected new void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!Page.IsPostBack)
+                {
+                    if (Session[Constantes.SESION_USUARIO_LOGIN] != null)
+                    {
+                        BEUsuario usuario = Session[Constantes.SESION_USUARIO_LOGIN] as BEUsuario;
+                        txtUsuario.Text = usuario.CodigoUsuario;
+                        lblTitulo.Text = WebConfigurationManager.AppSettings[Constantes.TITULO_RENOVACION_CLAVE];
+                    }
+                    else
+                    {
+                        txtUsuario.Text = Context.Items["usuario"].ToString();
+                        hdRol.Value = Context.Items["idRol"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session[Constantes.SESION_USUARIO_LOGIN] != null)
+                {
+                    Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_BIENVENIDO], false);
+                }
+                else
+                {
+                    //Eliminamos datos de la session
+                    HttpContext.Current.Session.Clear();
+                    HttpContext.Current.Session.Abandon();
+
+                    //Redirigimos a la pantalla de Login
+                    Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_LOGIN],false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool passwordExpirado = true;
+                if (Session[Constantes.SESION_USUARIO_LOGIN] != null)
+                {
+                    passwordExpirado = false;//Es cambio de contraseña xq le dio al boton de cambiar
+                }
+
+                if (txtPasswordNuevo1.Text.Equals(txtPasswordNuevo2.Text))
+                {
+                    ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
+                    string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
+                    string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
+
+                    string usuarioLogueo = txtUsuario.Text;
+                    int idAplicacion = Convert.ToInt16(WebConfigurationManager.AppSettings[Constantes.ID_APLICACION]);
+
+                    ServicioSeguridadJLT.BEActualizaClave beActualizaClave = new ServicioSeguridadJLT.BEActualizaClave();
+                    beActualizaClave.ClaveUsuarioServicio = passwordServicio;
+                    beActualizaClave.IdAplicacion = idAplicacion;
+                    beActualizaClave.CodigoUsuario = usuarioLogueo;
+                    beActualizaClave.NuevaClave = txtPasswordNuevo1.Text;
+                    beActualizaClave.ClaveAnterior = txtPasswordAnterior.Text;
+                    beActualizaClave.UsuarioServicio = usuarioServicio;
+
+                    if (passwordExpirado)//cambio por password expirado
+                    {
+                        int idRol = Convert.ToInt16(hdRol.Value);
+
+                        beActualizaClave.IdRol = idRol;
+
+                        ServicioSeguridadJLT.BERespuestaActualizaClave respuestaActualizaClave = servicioSeguridad.ActualizarClaveExpirada(beActualizaClave);
+
+                        if (respuestaActualizaClave.CodigoRespuesta.Equals(Constantes.CODIGO_RESPUESTA_CLAVE_ACTUALIZADA_CORRECTAMENTE))
+                        {
+                            BEUsuario usuario = ConvertUsuarioServicioToUsuario(respuestaActualizaClave.BEUsuario);
+
+                            Session.Add(Constantes.SESION_USUARIO_LOGIN, usuario);
+                            MessageBox.ShowAlertRedirect(WebConfigurationManager.AppSettings[Constantes.MSG_CLAVE_ACTUALIZADA_EXITOSAMENTE], WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_BIENVENIDO]);
+                            //Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_BIENVENIDO], false);
+                        }
+                        else
+                        {
+                            lblMensaje.Visible = true;
+                            lblMensaje.Text = respuestaActualizaClave.DescripcionRespuesta;
+                        }
+                    }
+                    else//cambio a demanda
+                    {
+                        ServicioSeguridadJLT.BERespuestaActualizaClave respuestaActualizaClave = servicioSeguridad.CambiarClave(beActualizaClave);
+
+                        if (respuestaActualizaClave.CodigoRespuesta.Equals(Constantes.CODIGO_RESPUESTA_CLAVE_ACTUALIZADA_CORRECTAMENTE))
+                        {
+                            MessageBox.ShowAlertRedirect(WebConfigurationManager.AppSettings[Constantes.MSG_CLAVE_ACTUALIZADA_EXITOSAMENTE], WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_BIENVENIDO]);
+                        }
+                        else
+                        {
+                            lblMensaje.Visible = true;
+                            lblMensaje.Text = respuestaActualizaClave.DescripcionRespuesta;
+                        }
+                    }
+                }
+                else
+                {
+                    lblMensaje.Visible = true;
+                    lblMensaje.Text = WebConfigurationManager.AppSettings[Constantes.MSG_CLAVES_DISTINTAS];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        override protected void OnInit(EventArgs e)
+        {
+            this.Load += new System.EventHandler(this.Page_Load);
+        }
+    }
+}

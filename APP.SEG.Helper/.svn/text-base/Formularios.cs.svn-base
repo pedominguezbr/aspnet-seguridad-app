@@ -1,0 +1,63 @@
+﻿//*********************************************************************************
+// Descripción      : Clase de Herramientas visuales para la aplicación
+// Autor            : Synopsis
+// Creación         : 13/05/2011
+//*********************************************************************************
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+using System.Web.Configuration;
+using System.Web.UI.WebControls;
+
+namespace JLT.SEG.Helper
+{
+    public static class Formularios
+    {
+        #region "Métodos"
+        /// <summary>
+        /// Función que llena de manera personalizada un DropDownList
+        /// </summary>
+        /// <param name="ddl">control DropDownList al que se desea asignar los valores</param>
+        /// <param name="listaDDL">lista con los valores a ser asignados</param>
+        /// <param name="campoTexto">nombre del campo que contiene el valor del registro</param>
+        /// <param name="campoValor">nombre del campo que contiene la descripcion</param>
+        /// <param name="campoDefault">valor del item por default</param>
+        public static void CargarDropDownList(DropDownList ddl, IList listaDDL, string campoText, string campoValue, string campoDefault)
+        {
+            ddl.DataSource = listaDDL;
+            ddl.DataTextField = campoText;
+            ddl.DataValueField = campoValue;
+            ddl.DataBind();
+            if (campoDefault != null)
+            {
+                ddl.Items.Insert(0, new ListItem(campoDefault, Constantes.ID_DDL_DEFAULT));
+            }
+        }
+        #endregion Fin Métodos
+
+        /// <summary>
+        /// Función que llena de manera personalizada un DropDownList de Estados
+        /// </summary>
+        /// <param name="ddl">control DropDownList al que se desea asignar los valores</param>
+        /// <param name="campoDefault">valor del item por default</param>
+        public static void CargarDdlEstados(DropDownList ddl, string campoDefault)
+        {            
+            ddl.Items.Insert(0, new ListItem(Constantes.TEXTO_ESTADO_INACTIVO, Constantes.VALUE_ESTADO_INACTIVO));
+            ddl.Items.Insert(0, new ListItem(Constantes.TEXTO_ESTADO_ACTIVO, Constantes.VALUE_ESTADO_ACTIVO));
+            if (campoDefault != String.Empty)
+                ddl.Items.Insert(0, new ListItem(campoDefault, Constantes.ID_DDL_DEFAULT));
+        }
+
+        public static void CargarDdlPagoTercero(DropDownList ddl, string campoDefault)
+        {
+            ddl.Items.Insert(0, new ListItem(Constantes.TEXTO_PAGO_TERCERO_1, Constantes.VALUE_PAGO_TERCERO_1));
+            ddl.Items.Insert(1, new ListItem(Constantes.TEXTO_PAGO_TERCERO_2, Constantes.VALUE_PAGO_TERCERO_2));
+            ddl.Items.Insert(2, new ListItem(Constantes.TEXTO_PAGO_TERCERO_3, Constantes.VALUE_PAGO_TERCERO_3));
+            if (campoDefault != String.Empty)
+                ddl.Items.Insert(0, new ListItem(campoDefault, Constantes.ID_DDL_DEFAULT));
+        }
+    }
+}

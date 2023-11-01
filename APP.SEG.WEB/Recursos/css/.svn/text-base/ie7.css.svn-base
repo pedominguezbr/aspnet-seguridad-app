@@ -1,0 +1,25 @@
+﻿.btn 
+{
+    min-width:100px;
+    }
+ table .btn
+ {
+ 	min-width:60px;
+    height: 27px;
+}
+ .lnkBuscarCliente
+ {
+     width:80px;
+     border:1px solid red;
+     }
+ .divBuscarCliente, .divBuscarCliente2
+ {
+     background-image:url(../images/buttons/btn_search.png);
+     background-position:center right;
+     background-repeat:no-repeat;
+     
+     }
+ .divBuscarCliente
+ {
+     width:280px;
+     }

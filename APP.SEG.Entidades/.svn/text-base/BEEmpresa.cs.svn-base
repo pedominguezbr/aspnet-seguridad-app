@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JLT.SEG.Entidades
+{
+    [Serializable()]
+    public class BEEmpresa
+    {
+        public int IdEmpresa { get; set; }
+        public string NomEmpresa { get; set; }
+        public BETipoEmpresa BETipoEmpresa { get; set; }
+        public bool EstadoEmpresa { get; set; }
+        public string Ruc { get; set; }
+        public string Telefono { get; set; }
+        public bool checkValor { get; set; }
+    }
+}

@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JLT.SEG.Entidades
+{
+    // se agrego la herencia a BEPermisoUsuario antes heredaba de BEPermiso
+    public class BEPermisoObjeto:BEPermiso
+    {
+
+        public BEObjeto BEObjeto { get; set; }
+        public int IdPermisoObjeto { get; set; }
+        public bool EstadoPermisoObjeto { get; set; }
+        public DateTime FechaCreacion { get; set; }
+       
+
+    }
+}

@@ -1,0 +1,211 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using APP.SEG.Entidades;
+using APP.SEG.Helper;
+using System.Web.Configuration;
+using APP.SEG.Negocio;
+using APP.SEG.WEB.Util;
+
+namespace APP.SEG.WEB.Empresa
+{
+    public partial class frmEmpresaBuscar : PaginaBase
+    {
+        private const string ID_EMPRESA = "IdEmpresa";
+        private const string ID_FORMULARIO = "frmEmpresaBuscar";
+
+        protected new void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                base.Page_Load(null, null);
+                if (!IsPostBack)
+                {
+                    this.Session.Remove(Constantes.SESION_EMPRESAS);
+
+                    //Cargamos los datos de los controles de la pantalla
+                    CargarDatosControles();
+                    this.dgvEmpresas.PageSize = Convert.ToInt32(WebConfigurationManager.AppSettings[Constantes.REGISTRO_PAGINA]);
+                }
+                CargarPermisosObjetosFormulario(ID_FORMULARIO);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void CargarDatosControles()
+        {
+            List<BEEmpresa> listaEmpresa = new List<BEEmpresa>();
+            BEEmpresa beEmpresa = new BEEmpresa();
+            beEmpresa.IdEmpresa = 0;
+            beEmpresa.NomEmpresa = "None";
+            beEmpresa.EstadoEmpresa = false;
+            listaEmpresa.Add(beEmpresa);
+            dgvEmpresas.DataSource = listaEmpresa;
+            dgvEmpresas.DataBind();
+            dgvEmpresas.Rows[0].Visible = false;
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = String.Empty;
+            dgvEmpresas.DataSource = null;
+            dgvEmpresas.DataBind();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BuscarEmpresasDataBind();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void BuscarEmpresasDataBind()
+        {
+            string mensaje;
+            BEEmpresa beEmpresa = new BEEmpresa();
+            BLEmpresa blEmpresa = new BLEmpresa();
+            beEmpresa.NomEmpresa = txtNombre.Text;
+            //blUsuario.BuscarUsuario(beUsuario);
+            List<BEEmpresa> listaEmpresas = new List<BEEmpresa>();
+            listaEmpresas = blEmpresa.BuscarEmpresa(beEmpresa);
+
+            if (listaEmpresas.Count > 0)
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA] + listaEmpresas.Count;
+            }
+            else
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA_CERO];
+            }
+            this.Session.Add(Constantes.SESION_EMPRESAS, listaEmpresas);
+
+            MostrarMensajeResultados(mensaje);
+            this.dgvEmpresas.PageIndex = 0;
+
+            dgvEmpresas.DataSource = listaEmpresas;
+            dgvEmpresas.DataBind();
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            //Redireccionamos a la pantalla de Detalle de Usuarios
+            Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_EMPRESA_DETALLE], false);
+
+        }
+
+        protected void dgvEmpresas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            dgvEmpresas.SelectedIndex = e.NewSelectedIndex;
+            dgvEmpresas.DataBind();
+        }
+
+        protected void dgvEmpresas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int IdEmpresa = Convert.ToInt32(e.CommandArgument);
+                if (e.CommandName == Constantes.COMANDO_ANULAR)
+                {
+                    BLEmpresa blEmpresa = new BLEmpresa();
+                    int codigoMensaje = 0;
+
+                    blEmpresa.EliminarEmpresa(IdEmpresa, ref codigoMensaje);
+                    if (codigoMensaje == 0)
+                    {
+                        MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_EMPRESA_ELIMINADO_EXITOSAMENTE]);
+                        BuscarEmpresasDataBind();
+                    }
+                    else
+                    {
+                        if (codigoMensaje == -1)
+                        {
+                            MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_NO_SE_PUEDE_ELIMINAR_EMPRESA]);
+                        }
+                    }
+                }
+                else if (e.CommandName == Constantes.COMANDO_MODIFICAR)
+                {
+                    Session.Remove(Constantes.SESION_EMPRESAS);
+                    String urlDetalleEmpresa = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_EMPRESA_DETALLE_MODIFICAR]) + "&" + ID_EMPRESA + "=" + IdEmpresa.ToString();
+                    Response.Redirect(urlDetalleEmpresa, false);
+                }
+                else if (e.CommandName == Constantes.COMANDO_CONSULTAR)
+                {
+                    Session.Remove(Constantes.SESION_EMPRESAS);
+                    String urlDetalleEmpresa = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_EMPRESA_DETALLE_CONSULTAR]) + "&" + ID_EMPRESA + "=" + IdEmpresa.ToString();
+                    Response.Redirect(urlDetalleEmpresa, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+        private void MostrarMensajeResultados(String Mensaje)
+        {
+            lbResultados.CssClass = this.lbResultados.CssClass + " displayShow";
+            lbResultados.Text = Mensaje;
+            lbResultados.Visible = true;
+        }
+        protected void dgvEmpresas_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int i = e.RowIndex;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+
+        }
+
+        protected void dgvEmpresas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                if (this.Session[Constantes.SESION_EMPRESAS] != null)
+                {
+                    this.dgvEmpresas.PageIndex = e.NewPageIndex;
+                    List<BEEmpresa> listaEmpresa = (List<BEEmpresa>)this.Session[Constantes.SESION_EMPRESAS];
+                    this.dgvEmpresas.DataSource = listaEmpresa;
+                    this.dgvEmpresas.DataBind();
+                }
+                else
+                {
+                    this.BuscarEmpresasDataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        override protected void OnInit(EventArgs e)
+        {
+            this.Load += new System.EventHandler(this.Page_Load);
+        }
+
+
+
+
+    }
+}

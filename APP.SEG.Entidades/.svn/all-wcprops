@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades
+END
+BERespuestaPermisoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BERespuestaPermisoObjeto.cs
+END
+BETipoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BETipoObjeto.cs
+END
+BEPermiso.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEPermiso.cs
+END
+BEBusquedaPermisoUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEBusquedaPermisoUsuario.cs
+END
+BEEncriptaClave.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEEncriptaClave.cs
+END
+BETipoUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BETipoUsuario.cs
+END
+BERespuestaActualizaClave.cs
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BERespuestaActualizaClave.cs
+END
+BEPermisoUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEPermisoUsuario.cs
+END
+BEBusquedaRol.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEBusquedaRol.cs
+END
+BERespuestaAcceso.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BERespuestaAcceso.cs
+END
+BERol.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BERol.cs
+END
+BEConsultaServicio.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEConsultaServicio.cs
+END
+BEEmpresa.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEEmpresa.cs
+END
+BEBusquedaUsuarioAcceso.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEBusquedaUsuarioAcceso.cs
+END
+BEUsuarioClave.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEUsuarioClave.cs
+END
+BEAplicacion.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEAplicacion.cs
+END
+BEOficina.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEOficina.cs
+END
+BEArea.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEArea.cs
+END
+BEBusquedaPermisoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEBusquedaPermisoObjeto.cs
+END
+BERespuestaEncriptaClave.cs
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BERespuestaEncriptaClave.cs
+END
+BEBusquedaObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEBusquedaObjeto.cs
+END
+BEValidaAcceso.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEValidaAcceso.cs
+END
+BEUsuarioLogin.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEUsuarioLogin.cs
+END
+BEPermisoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEPermisoObjeto.cs
+END
+BEBusquedaUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEBusquedaUsuario.cs
+END
+BEObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEObjeto.cs
+END
+BEEstadoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEEstadoObjeto.cs
+END
+BEMail.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEMail.cs
+END
+JLT.SEG.Entidades.snk
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/JLT.SEG.Entidades.snk
+END
+BEUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEUsuario.cs
+END
+BETipoEmpresa.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BETipoEmpresa.cs
+END
+BERespuestaRol.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BERespuestaRol.cs
+END
+BEActualizaClave.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEActualizaClave.cs
+END
+BEAuditoriaUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/BEAuditoriaUsuario.cs
+END
+JLT.SEG.Entidades.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.Entidades/JLT.SEG.Entidades.csproj
+END

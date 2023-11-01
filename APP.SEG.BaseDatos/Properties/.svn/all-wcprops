@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Properties
+END
+Database.sqlcmdvars
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Properties/Database.sqlcmdvars
+END
+Database.sqldeployment
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Properties/Database.sqldeployment
+END
+Database.sqlsettings
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Properties/Database.sqlsettings
+END
+Database.sqlpermissions
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.BaseDatos/Properties/Database.sqlpermissions
+END

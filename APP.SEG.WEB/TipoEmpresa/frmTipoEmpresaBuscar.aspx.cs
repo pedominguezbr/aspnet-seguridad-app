@@ -1,0 +1,215 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+using APP.SEG.Entidades;
+using APP.SEG.Helper;
+using System.Web.Configuration;
+using APP.SEG.Negocio;
+using APP.SEG.WEB.Util;
+
+namespace APP.SEG.WEB.TipoEmpresa
+{
+    public partial class frmTipoEmpresaBuscar : PaginaBase
+    {
+        private const string ID_TIPOEMPRESA = "IdTipoEmpresa";
+        private const string ID_FORMULARIO = "frmTipoEmpresaBuscar";
+
+        protected new void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                base.Page_Load(null, null);
+                if (!IsPostBack)
+                {
+                    this.Session.Remove(Constantes.SESION_TIPOEMPRESAS);
+
+                    //Cargamos los datos de los controles de la pantalla
+                    CargarDatosControles();
+                    this.dgvTipoEmpresas.PageSize = Convert.ToInt32(WebConfigurationManager.AppSettings[Constantes.REGISTRO_PAGINA]);
+                }
+                CargarPermisosObjetosFormulario(ID_FORMULARIO);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void CargarDatosControles()
+        {
+            List<BETipoEmpresa> listaTipoEmpresa = new List<BETipoEmpresa>();
+            BETipoEmpresa beTipoEmpresa = new BETipoEmpresa();
+            beTipoEmpresa.IdTipoEmpresa = 0;
+            beTipoEmpresa.NomTipoEmpresa = "None";
+            beTipoEmpresa.EstadoTipoEmpresa = false;
+            listaTipoEmpresa.Add(beTipoEmpresa);
+            dgvTipoEmpresas.DataSource = listaTipoEmpresa;
+            dgvTipoEmpresas.DataBind();
+            dgvTipoEmpresas.Rows[0].Visible = false;
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = String.Empty;
+            dgvTipoEmpresas.DataSource = null;
+            dgvTipoEmpresas.DataBind();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BuscarTipoEmpresasDataBind();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void BuscarTipoEmpresasDataBind()
+        {
+            string mensaje;
+            BETipoEmpresa beTipoEmpresa = new BETipoEmpresa();
+            BLTipoEmpresa blTipoEmpresa = new BLTipoEmpresa();
+            beTipoEmpresa.NomTipoEmpresa = txtNombre.Text;
+            //blUsuario.BuscarUsuario(beUsuario);
+            List<BETipoEmpresa> listaTipoEmpresas = new List<BETipoEmpresa>();
+            listaTipoEmpresas = blTipoEmpresa.BuscarTipoEmpresa(beTipoEmpresa);
+
+            if (listaTipoEmpresas.Count > 0)
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA] + listaTipoEmpresas.Count;
+            }
+            else
+            {
+                mensaje = WebConfigurationManager.AppSettings[Constantes.TITULO_RESULTADO_BUSQUEDA_CERO];
+            }
+            this.Session.Add(Constantes.SESION_TIPOEMPRESAS, listaTipoEmpresas);
+
+            MostrarMensajeResultados(mensaje);
+            this.dgvTipoEmpresas.PageIndex = 0;
+
+            dgvTipoEmpresas.DataSource = listaTipoEmpresas;
+            dgvTipoEmpresas.DataBind();
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            //Redireccionamos a la pantalla de Detalle de Usuarios
+            Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_TIPOEMPRESA_DETALLE], false);
+
+        }
+
+        protected void dgvTipoEmpresas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            dgvTipoEmpresas.SelectedIndex = e.NewSelectedIndex;
+            dgvTipoEmpresas.DataBind();
+        }
+
+        protected void dgvTipoEmpresas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                int IdTipoEmpresa = Convert.ToInt32(e.CommandArgument);
+                if (e.CommandName == Constantes.COMANDO_ANULAR)
+                {
+                    BLTipoEmpresa blTipoEmpresa = new BLTipoEmpresa();
+                    int codigoMensaje = 0;
+
+                    blTipoEmpresa.EliminarTipoEmpresa(IdTipoEmpresa, ref codigoMensaje);
+                    if (codigoMensaje == 0)
+                    {
+                        MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_TIPOEMPRESA_ELIMINADO_EXITOSAMENTE]);
+                        BuscarTipoEmpresasDataBind();
+                    }
+                    else
+                    {
+                        if (codigoMensaje == -1)
+                        {
+                            MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_NO_SE_PUEDE_ELIMINAR_TIPOEMPRESA]);
+                        }
+                    }
+                }
+                else if (e.CommandName == Constantes.COMANDO_MODIFICAR)
+                {
+                    Session.Remove(Constantes.SESION_TIPOEMPRESAS);
+                    String urlDetalleTipoEmpresa = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_TIPOEMPRESA_DETALLE_MODIFICAR]) + "&" + ID_TIPOEMPRESA + "=" + IdTipoEmpresa.ToString();
+                    Response.Redirect(urlDetalleTipoEmpresa, false);
+                }
+                else if (e.CommandName == Constantes.COMANDO_CONSULTAR)
+                {
+                    Session.Remove(Constantes.SESION_TIPOEMPRESAS);
+                    String urlDetalleTipoEmpresa = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_TIPOEMPRESA_DETALLE_CONSULTAR]) + "&" + ID_TIPOEMPRESA + "=" + IdTipoEmpresa.ToString();
+                    Response.Redirect(urlDetalleTipoEmpresa, false);
+                }
+                else if (e.CommandName == Constantes.COMANDO_MODIFICAR_PERMISOS)
+                {
+                    BLTipoEmpresa blTipoEmpresa = new BLTipoEmpresa();
+                    Session.Add(Constantes.SESION_TIPOEMPRESAS, blTipoEmpresa.ObtenerTipoEmpresa(IdTipoEmpresa));
+                    String urlDetalleTipoEmpresa = Convert.ToString(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_TIPOEMPRESA_APLICACION]);
+                    Response.Redirect(urlDetalleTipoEmpresa, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+        private void MostrarMensajeResultados(String Mensaje)
+        {
+            lbResultados.CssClass = this.lbResultados.CssClass + " displayShow";
+            lbResultados.Text = Mensaje;
+            lbResultados.Visible = true;
+        }
+        protected void dgvTipoEmpresas_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int i = e.RowIndex;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+
+        }
+
+        protected void dgvTipoEmpresas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                if (this.Session[Constantes.SESION_TIPOEMPRESAS] != null)
+                {
+                    this.dgvTipoEmpresas.PageIndex = e.NewPageIndex;
+                    List<BETipoEmpresa> listaTipoEmpresa = (List<BETipoEmpresa>)this.Session[Constantes.SESION_TIPOEMPRESAS];
+                    this.dgvTipoEmpresas.DataSource = listaTipoEmpresa;
+                    this.dgvTipoEmpresas.DataBind();
+                }
+                else
+                {
+                    this.BuscarTipoEmpresasDataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        override protected void OnInit(EventArgs e)
+        {
+            this.Load += new System.EventHandler(this.Page_Load);
+        }
+
+    }
+}

@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="JLTSeguridadLogin.master.cs" Inherits="APP.SEG.WEB.JLTSeguridadLogin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>APP® Seguridad - Bienvenido</title>
+	<link href="~/Recursos/css/clean.css" rel="stylesheet" type="text/css" />
+	<link href="~/Recursos/css/main.css" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+        <link href="~/Recursos/css/ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lte IE 7]>
+        <link href="~/Recursos/css/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+<div id="BigPage">
+<div id="header">
+	<div class="logo" style="margin-top:32px;"></div>
+
+</div><!-- FIN HEADER -->
+
+<div id="container">
+	<div class="welcome rounded">
+		<div class="sombra"></div>
+
+    <form id="form1" runat="server">
+    <div>
+        <div >
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
+        </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+        <div class="clear"></div>
+        <div class="sombra-inv"></div>
+	</div><!-- FIN WELCOME -->
+    </div><!-- FIN CONTAINER -->
+</div><!-- FIN BIGPAGE -->
+</body>
+</html>

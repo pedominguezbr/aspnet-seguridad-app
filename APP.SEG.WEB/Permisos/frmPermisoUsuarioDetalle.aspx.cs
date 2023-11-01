@@ -1,0 +1,147 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using APP.SEG.Entidades;
+using APP.SEG.Negocio;
+using APP.SEG.Helper;
+using System.Web.Configuration;
+using APP.SEG.WEB.Util;
+
+namespace APP.SEG.WEB.Permisos
+{
+    public partial class frmPermisoUsuarioDetalle : PaginaBase
+    {
+        private const string ID_FORMULARIO = "frmPermisoUsuarioDetalle";
+
+        protected new void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!IsPostBack)
+                {
+                    //Cargamos los datos de los controles de la pantalla
+                    CargarDatosControles();
+                    int idAplicacion = Convert.ToInt16(Request.Params["idAplicacion"]);
+                    int idUsuario = Convert.ToInt16(Request.Params["idUsuario"]);
+
+                    txtAplicativo.Text = new BLAplicacion().ObtenerAplicacion(idAplicacion).NombreCortoAplicacion;
+
+                    BEBusquedaPermisoUsuario beBusquedaPermisoUsuario = new BEBusquedaPermisoUsuario();
+                    beBusquedaPermisoUsuario.IdAplicacion = idAplicacion;
+                    beBusquedaPermisoUsuario.IdUsuario = idUsuario;
+
+                    BLPermisoUsuario blPermisoUsuario = new BLPermisoUsuario();
+                    List<BERol> listaRoles = blPermisoUsuario.ListarPermisoUsuario(beBusquedaPermisoUsuario);
+
+                    dgvRoles.DataSource = listaRoles;
+                    dgvRoles.DataBind();
+                }
+                CargarPermisosObjetosFormulario(ID_FORMULARIO);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        private void CargarDatosControles()
+        {
+            List<BERol> listaRol = new List<BERol>();
+            BERol beRol = new BERol();
+            beRol.IdRol = 0;
+            beRol.NombreRol = "None";
+            beRol.DescripcionRol = "None";
+            beRol.BePermisoUsuario = new BEPermisoUsuario();
+            beRol.BePermisoUsuario.Estado = false;
+            beRol.BePermisoUsuario.IdPermisoUsuario = -1;
+            listaRol.Add(beRol);
+
+            dgvRoles.DataSource = listaRol;
+            dgvRoles.DataBind();
+            dgvRoles.Rows[0].Visible = false;
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idAplicacion = Convert.ToInt16(Request.Params["idAplicacion"]);
+                int idUsuario = Convert.ToInt16(Request.Params["idUsuario"]);
+                BEPermisoUsuario permisoUsuario = null;
+                BEUsuario usuarioLogueo = Session[Constantes.SESION_USUARIO_LOGIN] as BEUsuario;
+                int idUsuarioLogueo = usuarioLogueo.IdUsuario;
+
+                BLPermisoUsuario blPermisoUsuario = new BLPermisoUsuario();
+                foreach (GridViewRow fila in dgvRoles.Rows)
+                {
+                    bool marcado = false;
+                    Control control = fila.Cells[0].FindControl("chkTieneAcceso");
+                    if (control != null)
+                    {
+                        marcado = ((CheckBox)control).Checked;
+
+                    }
+                    int idRol = Convert.ToInt16(fila.Cells[1].Text);
+                    int idPermisoUsuario = 0;
+                    Control control2 = fila.Cells[2].FindControl("lblIdPermisoUsuario");
+                    if (control2 != null)
+                    {
+                        idPermisoUsuario = Convert.ToInt16(((Label)control2).Text);
+                    }
+
+                    if (marcado && idPermisoUsuario == -1)//insertar
+                    {
+                        permisoUsuario = new BEPermisoUsuario();
+                        permisoUsuario.beUsuario = new BEUsuario();
+                        permisoUsuario.beUsuario.IdUsuario = idUsuario;
+                        permisoUsuario.BERol = new BERol();
+                        permisoUsuario.BERol.IdRol = idRol;
+                        permisoUsuario.BEAplicacion = new BEAplicacion();
+                        permisoUsuario.BEAplicacion.IdAplicacion = idAplicacion;
+                        permisoUsuario.IdUsuarioCreacion = idUsuarioLogueo;
+                        permisoUsuario.FechaCreacion = DateTime.Now.Date;
+                        permisoUsuario.Estado = true;
+
+                        blPermisoUsuario.InsertarPermisoUsuario(permisoUsuario);
+                    }
+                    else//delete
+                    {
+                        if (!marcado && idPermisoUsuario != -1)
+                        {
+                            blPermisoUsuario.EliminarPermisoUsuario(idPermisoUsuario);
+                        }
+                    }
+                }
+
+                Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_USUARIO_PERMISO_BUSCAR], false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect(WebConfigurationManager.AppSettings[Constantes.DIRECCION_FRM_USUARIO_PERMISO_BUSCAR], false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(WebConfigurationManager.AppSettings[Constantes.MSG_ERROR_GENERAL]);
+                NetLogger.WriteLog(ELogLevel.ERROR, ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        override protected void OnInit(EventArgs e)
+        {
+            this.Load += new System.EventHandler(this.Page_Load);
+        }
+    }
+}

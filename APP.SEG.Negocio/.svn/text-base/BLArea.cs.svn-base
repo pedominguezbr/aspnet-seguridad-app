@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using JLT.SEG.Entidades;
+using JLT.SEG.AccesoDatos;
+using JLT.SEG.Negocio;
+
+namespace JLT.SEG.Negocio
+{
+    public class BLArea
+    {
+
+        public List<BEArea> ListarArea()
+        {
+            DAArea daArea = new DAArea();
+            return daArea.ListarArea();
+        }
+    }
+}

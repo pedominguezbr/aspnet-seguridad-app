@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB
+END
+JLT.SEG.ServicioWEB.snk
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLT.SEG.ServicioWEB.snk
+END
+JLTEmpresa.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLTEmpresa.asmx.cs
+END
+Web.config
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/Web.config
+END
+Constantes.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/Constantes.cs
+END
+JLT.SEG.ServicioWEB.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLT.SEG.ServicioWEB.csproj
+END
+JLTSeguridad.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLTSeguridad.asmx
+END
+JLTCorreo.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLTCorreo.asmx
+END
+JLTSeguridad.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLTSeguridad.asmx.cs
+END
+JLTEmpresa.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLTEmpresa.asmx
+END
+JLTCorreo.asmx.cs
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.ServicioWEB/JLTCorreo.asmx.cs
+END

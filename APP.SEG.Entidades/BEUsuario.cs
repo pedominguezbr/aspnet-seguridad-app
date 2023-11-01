@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace APP.SEG.Entidades
+{
+    public class BEUsuario
+    {
+        public BEArea Area { get; set; }
+        public int IdUsuario { get; set; }
+        public string CodigoUsuario { get; set; }
+        public string Nombres { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public BETipoUsuario TipoUsuario { get; set; }
+        public int IdArea { get; set; }
+        public BEOficina Oficina { get; set; }
+        public bool RequierePassword { get; set; }
+        public string Password { get; set; }
+        public bool PasswordCaduca { get; set; }
+        public DateTime FechaCaduca { get; set; }
+        public bool CambiarPasswordEnInicio { get; set; }
+        public DateTime FechaCreacion { get; set; }
+        public BEUsuario UsuarioCreacion { get; set; }
+        public bool EstadoUsuario { get; set; }
+        public int PagoTercero { get; set; }
+        public string CorreoElectronico { get; set; }
+        //agregado
+        public BEPermisoUsuario PermisoUsuario { get; set; }
+    }
+}

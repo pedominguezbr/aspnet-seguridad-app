@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos
+END
+DAOficina.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAOficina.cs
+END
+DAArea.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAArea.cs
+END
+JLT.SEG.AccesoDatos.snk
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/JLT.SEG.AccesoDatos.snk
+END
+DATipoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DATipoObjeto.cs
+END
+DAPermisoObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAPermisoObjeto.cs
+END
+DAObjeto.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAObjeto.cs
+END
+JLT.SEG.AccesoDatos.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/JLT.SEG.AccesoDatos.csproj
+END
+DATipoUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DATipoUsuario.cs
+END
+DAPermisoUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAPermisoUsuario.cs
+END
+DAUsuario.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAUsuario.cs
+END
+DATipoEmpresa.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DATipoEmpresa.cs
+END
+DARol.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DARol.cs
+END
+DAEmpresa.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAEmpresa.cs
+END
+DAAcceso.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAAcceso.cs
+END
+DAAplicacion.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.AccesoDatos/DAAplicacion.cs
+END

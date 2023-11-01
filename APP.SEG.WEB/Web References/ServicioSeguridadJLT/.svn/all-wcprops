@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT
+END
+JLTSeguridad.disco
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/JLTSeguridad.disco
+END
+Reference.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/Reference.cs
+END
+BERespuestaActualizaClave.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BERespuestaActualizaClave.datasource
+END
+BEUsuario.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BEUsuario.datasource
+END
+BERespuestaRol.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BERespuestaRol.datasource
+END
+BETipoEmpresa.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BETipoEmpresa.datasource
+END
+BERespuestaAcceso.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BERespuestaAcceso.datasource
+END
+JLTSeguridad.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/JLTSeguridad.wsdl
+END
+Reference.map
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/Reference.map
+END
+BEEmpresa.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BEEmpresa.datasource
+END
+BERespuestaEncriptaClave.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BERespuestaEncriptaClave.datasource
+END
+BERespuestaPermisoObjeto.datasource
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Seguridad_R2/!svn/ver/3/trunk/SEGURIDAD_R2/JLT.SEG.WEB/Web%20References/ServicioSeguridadJLT/BERespuestaPermisoObjeto.datasource
+END

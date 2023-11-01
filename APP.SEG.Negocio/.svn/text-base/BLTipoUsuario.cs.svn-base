@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using JLT.SEG.Entidades;
+using JLT.SEG.Negocio;
+using JLT.SEG.AccesoDatos;
+
+namespace JLT.SEG.Negocio
+{
+    public class BLTipoUsuario
+    {
+        public List<BETipoUsuario> ListarTipoUsuario()
+        {
+            DATipoUsuario daTipoUsuario = new DATipoUsuario();
+            return daTipoUsuario.ListarTipoUsuario();
+
+        }
+    }
+}
