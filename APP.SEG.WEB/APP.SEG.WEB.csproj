@@ -151,12 +151,12 @@
     <Compile Include="APPSeguridad.Master.designer.cs">
       <DependentUpon>APPSeguridad.Master</DependentUpon>
     </Compile>
-    <Compile Include="JLTSeguridadLogin.Master.cs">
-      <DependentUpon>JLTSeguridadLogin.Master</DependentUpon>
+    <Compile Include="APPSeguridadLogin.Master.cs">
+      <DependentUpon>APPSeguridadLogin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="JLTSeguridadLogin.Master.designer.cs">
-      <DependentUpon>JLTSeguridadLogin.Master</DependentUpon>
+    <Compile Include="APPSeguridadLogin.Master.designer.cs">
+      <DependentUpon>APPSeguridadLogin.Master</DependentUpon>
     </Compile>
     <Compile Include="Login\frmBienvenido.aspx.cs">
       <DependentUpon>frmBienvenido.aspx</DependentUpon>
@@ -311,7 +311,7 @@
     <Compile Include="Util\PaginaBase.aspx.designer.cs">
       <DependentUpon>PaginaBase.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\ServicioSeguridadJLT\Reference.cs">
+    <Compile Include="Web References\ServicioSeguridadAPP\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -352,7 +352,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="JLTSeguridadLogin.Master" />
+    <Content Include="APPSeguridadLogin.Master" />
     <Content Include="Lib\log4net.dll" />
     <Content Include="Permisos\frmPermisoObjetoBuscar.aspx" />
     <Content Include="Permisos\frmPermisoObjetoDetalle.aspx" />
@@ -377,37 +377,37 @@
     <Content Include="Util\PaginaBase.aspx" />
     <None Include="APP.SEG.WEB.snk" />
     <None Include="Migrated rules for APP.SEG.WEB.ruleset" />
-    <None Include="Web References\ServicioSeguridadJLT\BEEmpresa.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BEEmpresa.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\BERespuestaAcceso.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BERespuestaAcceso.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\BERespuestaActualizaClave.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BERespuestaActualizaClave.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\BERespuestaEncriptaClave.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BERespuestaEncriptaClave.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\BERespuestaPermisoObjeto.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BERespuestaPermisoObjeto.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\BERespuestaRol.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BERespuestaRol.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\BETipoEmpresa.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BETipoEmpresa.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\BEUsuario.datasource">
+    <None Include="Web References\ServicioSeguridadAPP\BEUsuario.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\APPSeguridad.disco" />
+    <None Include="Web References\ServicioSeguridadAPP\APPSeguridad.disco" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\ServicioSeguridadJLT\APPSeguridad.wsdl" />
-    <None Include="Web References\ServicioSeguridadJLT\Reference.map">
+    <None Include="Web References\ServicioSeguridadAPP\APPSeguridad.wsdl" />
+    <None Include="Web References\ServicioSeguridadAPP\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -418,14 +418,14 @@
   <ItemGroup>
     <WebReferenceUrl Include="http://72.167.200.18/Servicios/APPSeguridad.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ServicioSeguridadJLT\</RelPath>
+      <RelPath>Web References\ServicioSeguridadAPP\</RelPath>
       <UpdateFromURL>http://72.167.200.18/Servicios/APPSeguridad.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>JLT_SEG_WEB_ServicioSeguridadJLT_ServicioSeguridad</CachedSettingsPropName>
+      <CachedSettingsPropName>APP_SEG_WEB_ServicioSeguridadAPP_ServicioSeguridad</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
@@ -447,7 +447,7 @@
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1567</DevelopmentServerPort>
-          <DevelopmentServerVPath>/SeguridadJLT</DevelopmentServerVPath>
+          <DevelopmentServerVPath>/SeguridadAPP</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

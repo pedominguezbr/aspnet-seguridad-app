@@ -20,17 +20,17 @@ namespace APP.SEG.WEB.Login
                 if (!Page.IsPostBack)
                 {
                     int idAplicacion = Convert.ToInt16(WebConfigurationManager.AppSettings[Constantes.ID_APLICACION]);
-                    ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
+                    ServicioSeguridadAPP.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadAPP.ServicioSeguridad();
 
                     string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
                     string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
 
-                    ServicioSeguridadJLT.BEConsultaServicio beConsultaServicio = new APP.SEG.WEB.ServicioSeguridadJLT.BEConsultaServicio();
+                    ServicioSeguridadAPP.BEConsultaServicio beConsultaServicio = new APP.SEG.WEB.ServicioSeguridadAPP.BEConsultaServicio();
                     beConsultaServicio.IdAplicacion = idAplicacion;
                     beConsultaServicio.UsuarioServicio = usuarioServicio;
                     beConsultaServicio.ClaveUsuarioServicio = passwordServicio;
 
-                    ServicioSeguridadJLT.BERespuestaRol respuestaRol = servicioSeguridad.ListarRol(beConsultaServicio);
+                    ServicioSeguridadAPP.BERespuestaRol respuestaRol = servicioSeguridad.ListarRol(beConsultaServicio);
 
                     if (respuestaRol.CodigoRespuesta.Equals(Constantes.CODIGO_RESPUESTA_EXITOSA_LISTA_ROLES))
                     {
@@ -54,15 +54,15 @@ namespace APP.SEG.WEB.Login
         {
             if (txtUsuario.Text != String.Empty && txtPassword.Text != String.Empty && ddlRol.SelectedIndex > 0)
             {
-                ServicioSeguridadJLT.BERespuestaAcceso respuestaAcceso = null;
+                ServicioSeguridadAPP.BERespuestaAcceso respuestaAcceso = null;
                 try
                 {
                     int idAplicacion = Convert.ToInt16(WebConfigurationManager.AppSettings[Constantes.ID_APLICACION]);
-                    ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
+                    ServicioSeguridadAPP.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadAPP.ServicioSeguridad();
                     string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
                     string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
 
-                    ServicioSeguridadJLT.BEValidaAcceso beValidaAcceso = new APP.SEG.WEB.ServicioSeguridadJLT.BEValidaAcceso();
+                    ServicioSeguridadAPP.BEValidaAcceso beValidaAcceso = new APP.SEG.WEB.ServicioSeguridadAPP.BEValidaAcceso();
                     beValidaAcceso.UsuarioLogueo = txtUsuario.Text;
                     beValidaAcceso.ClaveLogueo = txtPassword.Text;
                     beValidaAcceso.UsuarioServicio = usuarioServicio;

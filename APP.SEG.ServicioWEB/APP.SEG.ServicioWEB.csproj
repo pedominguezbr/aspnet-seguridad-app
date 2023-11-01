@@ -65,8 +65,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="JLTCorreo.asmx" />
-    <Content Include="JLTEmpresa.asmx" />
+    <Content Include="APPCorreo.asmx" />
+    <Content Include="APPEmpresa.asmx" />
     <Content Include="APPSeguridad.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -74,12 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constantes.cs" />
-    <Compile Include="JLTCorreo.asmx.cs">
-      <DependentUpon>JLTCorreo.asmx</DependentUpon>
+    <Compile Include="APPCorreo.asmx.cs">
+      <DependentUpon>APPCorreo.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="JLTEmpresa.asmx.cs">
-      <DependentUpon>JLTEmpresa.asmx</DependentUpon>
+    <Compile Include="APPEmpresa.asmx.cs">
+      <DependentUpon>APPEmpresa.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="APPSeguridad.asmx.cs">

@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="APP.SEG.WEB.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="JLT_SEG_WEB_ServicioSeguridadJLT_ServicioSeguridad" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="APP_SEG_WEB_ServicioSeguridadAPP_ServicioSeguridad" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://72.167.200.18/Servicios/APPSeguridad.asmx</Value>
     </Setting>
   </Settings>

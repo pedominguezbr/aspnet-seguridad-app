@@ -23,7 +23,7 @@ namespace APP.SEG.WEB.Util
                 txtResultado.Text = string.Empty;
                 if (ValidarClave(txtClave.Text.Trim()) == true)
                 {
-                    ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
+                    ServicioSeguridadAPP.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadAPP.ServicioSeguridad();
 
                     string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
                     string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
@@ -31,12 +31,12 @@ namespace APP.SEG.WEB.Util
                     string passwordEncriptado = txtValor.Text.Trim();
                     int idAplicacion = Convert.ToInt16(WebConfigurationManager.AppSettings[Constantes.ID_APLICACION]);
 
-                    ServicioSeguridadJLT.BEEncriptaClave beEncriptaClave = new ServicioSeguridadJLT.BEEncriptaClave();
+                    ServicioSeguridadAPP.BEEncriptaClave beEncriptaClave = new ServicioSeguridadAPP.BEEncriptaClave();
                     beEncriptaClave.ClaveUsuarioServicio = passwordServicio;
                     beEncriptaClave.UsuarioServicio = usuarioServicio;
                     beEncriptaClave.IdAplicacion = idAplicacion;
                     beEncriptaClave.PasswordDesencriptado = passwordEncriptado;
-                    ServicioSeguridadJLT.BERespuestaEncriptaClave beRespuestaEncriptaClave = servicioSeguridad.EncriptarPassword(beEncriptaClave);
+                    ServicioSeguridadAPP.BERespuestaEncriptaClave beRespuestaEncriptaClave = servicioSeguridad.EncriptarPassword(beEncriptaClave);
                     lblMensaje.Text = string.Empty;
                     if (beRespuestaEncriptaClave.CodigoRespuesta.Equals(Constantes.CODIGO_RESPUESTA_DESENCRIPTACION_EXITOSA))
                     {
@@ -83,7 +83,7 @@ namespace APP.SEG.WEB.Util
                 txtResultado.Text = string.Empty;
                 if (ValidarClave(txtClave.Text.Trim()) == true)
                 {
-                    ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
+                    ServicioSeguridadAPP.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadAPP.ServicioSeguridad();
 
                     string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
                     string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
@@ -91,12 +91,12 @@ namespace APP.SEG.WEB.Util
                     string passwordEncriptado = txtValor.Text.Trim();
                     int idAplicacion = Convert.ToInt16(WebConfigurationManager.AppSettings[Constantes.ID_APLICACION]);
 
-                    ServicioSeguridadJLT.BEEncriptaClave beEncriptaClave = new ServicioSeguridadJLT.BEEncriptaClave();
+                    ServicioSeguridadAPP.BEEncriptaClave beEncriptaClave = new ServicioSeguridadAPP.BEEncriptaClave();
                     beEncriptaClave.ClaveUsuarioServicio = passwordServicio;
                     beEncriptaClave.UsuarioServicio = usuarioServicio;
                     beEncriptaClave.IdAplicacion = idAplicacion;
                     beEncriptaClave.PasswordEncriptado = passwordEncriptado;
-                    ServicioSeguridadJLT.BERespuestaEncriptaClave beRespuestaEncriptaClave = servicioSeguridad.DesencriptarPassword(beEncriptaClave);
+                    ServicioSeguridadAPP.BERespuestaEncriptaClave beRespuestaEncriptaClave = servicioSeguridad.DesencriptarPassword(beEncriptaClave);
                     lblMensaje.Text = string.Empty;
                     if (beRespuestaEncriptaClave.CodigoRespuesta.Equals(Constantes.CODIGO_RESPUESTA_DESENCRIPTACION_EXITOSA))
                     {

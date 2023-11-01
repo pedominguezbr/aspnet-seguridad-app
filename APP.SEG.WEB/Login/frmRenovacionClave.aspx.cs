@@ -76,14 +76,14 @@ namespace APP.SEG.WEB.Login
 
                 if (txtPasswordNuevo1.Text.Equals(txtPasswordNuevo2.Text))
                 {
-                    ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
+                    ServicioSeguridadAPP.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadAPP.ServicioSeguridad();
                     string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
                     string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
 
                     string usuarioLogueo = txtUsuario.Text;
                     int idAplicacion = Convert.ToInt16(WebConfigurationManager.AppSettings[Constantes.ID_APLICACION]);
 
-                    ServicioSeguridadJLT.BEActualizaClave beActualizaClave = new ServicioSeguridadJLT.BEActualizaClave();
+                    ServicioSeguridadAPP.BEActualizaClave beActualizaClave = new ServicioSeguridadAPP.BEActualizaClave();
                     beActualizaClave.ClaveUsuarioServicio = passwordServicio;
                     beActualizaClave.IdAplicacion = idAplicacion;
                     beActualizaClave.CodigoUsuario = usuarioLogueo;
@@ -97,7 +97,7 @@ namespace APP.SEG.WEB.Login
 
                         beActualizaClave.IdRol = idRol;
 
-                        ServicioSeguridadJLT.BERespuestaActualizaClave respuestaActualizaClave = servicioSeguridad.ActualizarClaveExpirada(beActualizaClave);
+                        ServicioSeguridadAPP.BERespuestaActualizaClave respuestaActualizaClave = servicioSeguridad.ActualizarClaveExpirada(beActualizaClave);
 
                         if (respuestaActualizaClave.CodigoRespuesta.Equals(Constantes.CODIGO_RESPUESTA_CLAVE_ACTUALIZADA_CORRECTAMENTE))
                         {
@@ -115,7 +115,7 @@ namespace APP.SEG.WEB.Login
                     }
                     else//cambio a demanda
                     {
-                        ServicioSeguridadJLT.BERespuestaActualizaClave respuestaActualizaClave = servicioSeguridad.CambiarClave(beActualizaClave);
+                        ServicioSeguridadAPP.BERespuestaActualizaClave respuestaActualizaClave = servicioSeguridad.CambiarClave(beActualizaClave);
 
                         if (respuestaActualizaClave.CodigoRespuesta.Equals(Constantes.CODIGO_RESPUESTA_CLAVE_ACTUALIZADA_CORRECTAMENTE))
                         {

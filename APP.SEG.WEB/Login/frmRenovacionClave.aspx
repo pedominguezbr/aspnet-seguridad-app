@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/JLTSeguridadLogin.Master" AutoEventWireup="false" CodeBehind="frmRenovacionClave.aspx.cs" Inherits="APP.SEG.WEB.Login.frmRenovacionClave" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/APPSeguridadLogin.Master" AutoEventWireup="false" CodeBehind="frmRenovacionClave.aspx.cs" Inherits="APP.SEG.WEB.Login.frmRenovacionClave" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

@@ -50,27 +50,27 @@ namespace APP.SEG.WEB
 
             if (Session[Constantes.SESION_OPCIONES_MENU] != null)
             {
-                List<ServicioSeguridadJLT.BEObjeto> lista = Session[Constantes.SESION_OPCIONES_MENU] as List<ServicioSeguridadJLT.BEObjeto>;
+                List<ServicioSeguridadAPP.BEObjeto> lista = Session[Constantes.SESION_OPCIONES_MENU] as List<ServicioSeguridadAPP.BEObjeto>;
 
-                List<ServicioSeguridadJLT.BEObjeto> listaObjetosPadres = lista.FindAll(
-                delegate(ServicioSeguridadJLT.BEObjeto bk)
+                List<ServicioSeguridadAPP.BEObjeto> listaObjetosPadres = lista.FindAll(
+                delegate(ServicioSeguridadAPP.BEObjeto bk)
                 {
                     return bk.IdObjetoPadre.Equals(-1) && bk.EstadoPermisoObjeto;
                 }
                 );
 
-                foreach (ServicioSeguridadJLT.BEObjeto objeto in listaObjetosPadres)
+                foreach (ServicioSeguridadAPP.BEObjeto objeto in listaObjetosPadres)
                 {
                     cadenaMenu.Append(string.Format("<li><a>{0}</a>\n", objeto.EtiquetaObjeto));
 
-                    List<ServicioSeguridadJLT.BEObjeto> listaObjetosHijos = lista.FindAll(
-                    delegate(ServicioSeguridadJLT.BEObjeto bk)
+                    List<ServicioSeguridadAPP.BEObjeto> listaObjetosHijos = lista.FindAll(
+                    delegate(ServicioSeguridadAPP.BEObjeto bk)
                     {
                         return bk.IdObjetoPadre.Equals(objeto.IdObjeto) && bk.EstadoPermisoObjeto;
                     }
                     );
                     cadenaMenu.Append("\t<ul class=\"listav links\"  style=\"display: none; \">\n");
-                    foreach (ServicioSeguridadJLT.BEObjeto objetoHijo in listaObjetosHijos)
+                    foreach (ServicioSeguridadAPP.BEObjeto objetoHijo in listaObjetosHijos)
                     {
                         cadenaMenu.Append(string.Format("\t\t<li><a id=\"ctl00_HyperLink{0}\" href=\"{1}\">{2}</a></li>\n", objetoHijo.IdObjeto, "../" + objetoHijo.UrlObjeto, objetoHijo.EtiquetaObjeto));
                     }

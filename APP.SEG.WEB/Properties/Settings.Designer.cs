@@ -27,9 +27,9 @@ namespace APP.SEG.WEB.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://72.167.200.18/Servicios/APPSeguridad.asmx")]
-        public string JLT_SEG_WEB_ServicioSeguridadJLT_ServicioSeguridad {
+        public string APP_SEG_WEB_ServicioSeguridadAPP_ServicioSeguridad {
             get {
-                return ((string)(this["JLT_SEG_WEB_ServicioSeguridadJLT_ServicioSeguridad"]));
+                return ((string)(this["APP_SEG_WEB_ServicioSeguridadAPP_ServicioSeguridad"]));
             }
         }
     }

@@ -11,7 +11,7 @@
 namespace APP.SEG.WEB {
 
 
-    public partial class JLTSeguridadLogin {
+    public partial class APPSeguridadLogin {
 
         /// <summary>
         /// Head1 control.

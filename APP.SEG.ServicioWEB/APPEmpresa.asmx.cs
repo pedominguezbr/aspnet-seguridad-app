@@ -9,14 +9,14 @@ using APP.SEG.Negocio;
 namespace APP.SEG.ServicioWEB
 {
     /// <summary>
-    /// Summary description for JLTEmpresa
+    /// Summary description for APPEmpresa
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line.
     // [System.Web.Script.Services.ScriptService]
-    public class JLTEmpresa : System.Web.Services.WebService
+    public class APPEmpresa : System.Web.Services.WebService
     {
         [WebMethod(Description = "Insertar Empresa")]
         public bool InsertarEmpresa(BEEmpresa oBEEmpresa) {

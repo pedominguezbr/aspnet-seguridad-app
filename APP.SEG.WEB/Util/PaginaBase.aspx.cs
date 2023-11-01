@@ -17,7 +17,7 @@ namespace APP.SEG.WEB.Util
 
         }
 
-        public BEUsuario ConvertUsuarioServicioToUsuario(ServicioSeguridadJLT.BEUsuario usuarioServicio)
+        public BEUsuario ConvertUsuarioServicioToUsuario(ServicioSeguridadAPP.BEUsuario usuarioServicio)
         {
             BEUsuario usuario = new BEUsuario();
             try
@@ -78,24 +78,24 @@ namespace APP.SEG.WEB.Util
                 string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
                 string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
 
-                ServicioSeguridadJLT.BEConsultaServicio beConsultaServicio = new ServicioSeguridadJLT.BEConsultaServicio();
+                ServicioSeguridadAPP.BEConsultaServicio beConsultaServicio = new ServicioSeguridadAPP.BEConsultaServicio();
                 beConsultaServicio.IdAplicacion = idAplicacion;
                 beConsultaServicio.IdRol = idRol;
                 beConsultaServicio.NombreFormulario = idFormulario;
                 beConsultaServicio.UsuarioServicio = usuarioServicio;
                 beConsultaServicio.ClaveUsuarioServicio = passwordServicio;
 
-                ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
-                ServicioSeguridadJLT.BERespuestaPermisoObjeto respuestaPermisoObjeto = servicioSeguridad.ListarPermisoObjetoPorFormulario(beConsultaServicio);
-                List<ServicioSeguridadJLT.BEObjeto> lista;
+                ServicioSeguridadAPP.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadAPP.ServicioSeguridad();
+                ServicioSeguridadAPP.BERespuestaPermisoObjeto respuestaPermisoObjeto = servicioSeguridad.ListarPermisoObjetoPorFormulario(beConsultaServicio);
+                List<ServicioSeguridadAPP.BEObjeto> lista;
 
-                lista = respuestaPermisoObjeto.ListaObjetos.Cast<ServicioSeguridadJLT.BEObjeto>().ToList();
+                lista = respuestaPermisoObjeto.ListaObjetos.Cast<ServicioSeguridadAPP.BEObjeto>().ToList();
                 int cantidad = lista.Count;
 
                 ContentPlaceHolder contenedor = (ContentPlaceHolder)Master.FindControl("MainContent");
 
-                ServicioSeguridadJLT.BEObjeto objetoFormularioPadre = lista.Find(
-                delegate(ServicioSeguridadJLT.BEObjeto bk)
+                ServicioSeguridadAPP.BEObjeto objetoFormularioPadre = lista.Find(
+                delegate(ServicioSeguridadAPP.BEObjeto bk)
                 {
                     return bk.NombreFisicoObjeto.Equals(idFormulario);
                 }
@@ -107,7 +107,7 @@ namespace APP.SEG.WEB.Util
                 }
                 if (formularioTienePermisos)
                 {
-                    foreach (ServicioSeguridadJLT.BEObjeto objeto in lista)
+                    foreach (ServicioSeguridadAPP.BEObjeto objeto in lista)
                     {
                         if (objeto.TipoObjeto.IdTipoObjeto != Constantes.CODIGO_TIPO_OBJETO_FORMULARIO && objeto.TipoObjeto.IdTipoObjeto != Constantes.CODIGO_TIPO_OBJETO_OPCION_MENU)
                         {

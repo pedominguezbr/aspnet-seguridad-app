@@ -28,18 +28,18 @@ namespace APP.SEG.WEB.Login
                         string usuarioServicio = WebConfigurationManager.AppSettings[Constantes.USUARIO_SERVICIO];
                         string passwordServicio = WebConfigurationManager.AppSettings[Constantes.PASSWORD_SERVICIO];
 
-                        ServicioSeguridadJLT.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadJLT.ServicioSeguridad();
+                        ServicioSeguridadAPP.ServicioSeguridad servicioSeguridad = new APP.SEG.WEB.ServicioSeguridadAPP.ServicioSeguridad();
 
-                        ServicioSeguridadJLT.BEConsultaServicio beConsultaServicio = new ServicioSeguridadJLT.BEConsultaServicio();
+                        ServicioSeguridadAPP.BEConsultaServicio beConsultaServicio = new ServicioSeguridadAPP.BEConsultaServicio();
                         beConsultaServicio.IdAplicacion = idAplicacion;
                         beConsultaServicio.IdRol = idRol;
                         beConsultaServicio.UsuarioServicio = usuarioServicio;
                         beConsultaServicio.ClaveUsuarioServicio = passwordServicio;
 
-                        ServicioSeguridadJLT.BERespuestaPermisoObjeto respuestaPermisoObjeto = servicioSeguridad.ListarPermisoObjetoMenuOpciones(beConsultaServicio);
-                        List<ServicioSeguridadJLT.BEObjeto> listaOpcionesMenu;
+                        ServicioSeguridadAPP.BERespuestaPermisoObjeto respuestaPermisoObjeto = servicioSeguridad.ListarPermisoObjetoMenuOpciones(beConsultaServicio);
+                        List<ServicioSeguridadAPP.BEObjeto> listaOpcionesMenu;
 
-                        listaOpcionesMenu = respuestaPermisoObjeto.ListaObjetos.Cast<ServicioSeguridadJLT.BEObjeto>().ToList();
+                        listaOpcionesMenu = respuestaPermisoObjeto.ListaObjetos.Cast<ServicioSeguridadAPP.BEObjeto>().ToList();
 
                         Session.Add(Constantes.SESION_OPCIONES_MENU, listaOpcionesMenu);
 

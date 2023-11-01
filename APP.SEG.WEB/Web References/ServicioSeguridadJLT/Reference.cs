@@ -13,7 +13,7 @@
 //
 #pragma warning disable 1591
 
-namespace APP.SEG.WEB.ServicioSeguridadJLT {
+namespace APP.SEG.WEB.ServicioSeguridadAPP {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -80,7 +80,7 @@ namespace APP.SEG.WEB.ServicioSeguridadJLT {
 
         /// <remarks/>
         public ServicioSeguridad() {
-            this.Url = global::APP.SEG.WEB.Properties.Settings.Default.JLT_SEG_WEB_ServicioSeguridadJLT_ServicioSeguridad;
+            this.Url = global::APP.SEG.WEB.Properties.Settings.Default.APP_SEG_WEB_ServicioSeguridadAPP_ServicioSeguridad;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

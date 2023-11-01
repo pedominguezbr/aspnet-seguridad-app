@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace APP.SEG.WEB
 {
-    public partial class JLTSeguridadLogin : System.Web.UI.MasterPage
+    public partial class APPSeguridadLogin : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

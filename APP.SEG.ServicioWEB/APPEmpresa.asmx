@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="JLTEmpresa.asmx.cs" Class="APP.SEG.ServicioWEB.JLTEmpresa" %>
+﻿<%@ WebService Language="C#" CodeBehind="APPEmpresa.asmx.cs" Class="APP.SEG.ServicioWEB.APPEmpresa" %>
